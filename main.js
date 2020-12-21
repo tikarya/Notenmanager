@@ -18,6 +18,7 @@ function mkGrades(){
 }
 // array for grades divides by [1.HY,2.HY,AP]; subjects are analog to the HTML file order/id
 let grades = [new Array(12),new Array(11),new Array(4)];
+let greade_count = 0;
 
 //some debug grades
 //grades = [[12,11,10,5,8,11,12,13,15,,5,12],[8,11,12,11,5,14,7,8,9,,11],[2,6,4,8]];
@@ -78,6 +79,9 @@ function setGrades(id){
 
   // validate grades and set them if valid
   if(grade.value<16&&grade.value>=0){
+        if(grades[selector[1]][selector[0]]== undefined){
+                greade_count += 1;
+        }
         grades[selector[1]][selector[0]] = parseInt(grade.value);
         localStorage.setItem("grades",JSON.stringify(grades));
         grade.className = "";
@@ -97,7 +101,6 @@ function checkCross(){
 // calculate the average
 function calculate(){
     let all = 0;
-    // TODO: grade counter/object
     for (let i = 0; i < grades.length; i++) {
         const array = grades[i];
         for (let j = 0; j < array.length; j++) {
@@ -108,12 +111,11 @@ function calculate(){
                 if(i == 2){
                     element *= 2;
                 }
-               // debug console.log(element);
                 all += element;
             }
         }
     }
     let erg = 17/3-5*all/390;
-    console.log({erg,all});
+    //console.log({erg,all});
     document.getElementById("erg").innerText ="Notendurchschnitt: "+ (erg).toFixed(2);
 }
