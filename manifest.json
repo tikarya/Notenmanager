@@ -1,0 +1,18 @@
+{
+    "name": "Notenmanager",
+    "short_name": "NotenM",
+    "start_url":"index.html",
+    "description": "Notenmanager for Bavarian BOS",
+    "display": "standalone",
+    "icons": [{
+      "src": "img/icon_smol.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon_huge.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }]
+  }
+  
