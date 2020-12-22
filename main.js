@@ -83,9 +83,10 @@ function setGrades(id){
             //Counts input grades of HYs for crossing them out
                 grade_count += 1;
         }
-        grades[selector[1]][selector[0]] = [parseInt(grade.value),parseInt(selector[0])];
+        grades[selector[1]][selector[0]] = [parseInt(grade.value),parseInt(selector[0]),parseInt(selector[1])];
         localStorage.setItem("grades",JSON.stringify(grades));
         grade.className = "";
+        checkCrossing();
         if(grade_count>= 17){
             calculate();
         }
@@ -98,10 +99,8 @@ function setGrades(id){
 }
 
 function checkCrossing(){
-    let hy1 = grades[0];
-    let hy2 = grades[1];
-  
-
+    let allhy = grades[0].concat(grades[1]);
+    console.log(allhy);
 
 }
 
