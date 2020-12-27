@@ -13,11 +13,9 @@ function wahlpflichtfach(wpfname,shortname,valid){
     this.val= valid;
 }
 
-function mkGrades(){
-  
-}
 // array for grades divides by [1.HY,2.HY,AP]; each grade in the array is another array with[acutal grade, subject];
 let grades = [new Array(12),new Array(11),new Array(4)];
+let grade_crossed = [];
 let grade_count = 0;
 
 //some debug grades
@@ -74,20 +72,21 @@ function select_wpf(){
 function setGrades(id){
 // get the node form DOM
   let grade = document.getElementById(id);
-  // split id into usable indexes [0=subject;1=type (1,2 HJ//AP)]
+  // split id into usable indexes [0=type (1,2 HJ//AP);1=subject]
   const selector = id.split(";");
 
   // validate grades and set them if valid
   if(grade.value<16&&grade.value>=0){
-        if((selector[1] == 0|| selector[1] ==1) &&grades[selector[1]][selector[0]]== undefined){
+        if((selector[0] == 0|| selector[0] ==1) && grades[selector[0]][selector[1]]== undefined){
             //Counts input grades of HYs for crossing them out
                 grade_count += 1;
         }
-        grades[selector[1]][selector[0]] = [parseInt(grade.value),parseInt(selector[0]),parseInt(selector[1])];
+        grades[selector[0]][selector[1]] = [parseInt(grade.value),parseInt(selector[0]),parseInt(selector[1])];
         localStorage.setItem("grades",JSON.stringify(grades));
         grade.className = "";
-        checkCrossing();
+        
         if(grade_count>= 17){
+            checkCrossing();
             calculate();
         }
     }else{
@@ -100,6 +99,23 @@ function setGrades(id){
 
 function checkCrossing(){
     let allhy = grades[0].concat(grades[1]);
+    allhy.sort(function(a,b) {
+        return a[0]-b[0]
+    });
+    grade_crossed.forEach(element => {
+        const id = (element[1] + ";" + element[2]).toString();
+        document.getElementById(id).className = undefined;
+
+    });
+
+    for (let i = 0; i < 4; i++) {
+        const element = allhy[i];
+        grade_crossed[i] = element; 
+        const id = (element[1] + ";" + element[2]).toString();
+        const node = document.getElementById(id);
+        node.className = "warning";
+        
+    }
     console.log(allhy);
 
 }
