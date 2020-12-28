@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html title="Notenmanager for FOS Bayern" lang="de-DE">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/icon_huge.png">
+    <head>
+
+    </head>
+    <body>
+        <p>Notenmanager FOS</p>
+        <label for="select">Zweig</label>
+        <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
+            <option disabled selected>--Zweig auswaehlen--</option>
+            <option value="1">Gesundheit</option>
+            <option value="0">Technik</option>
+            <option value="2">Wirtschaft und Verwaltung</option>
+            <option value="3">Sozialwesen</option>
+        </select>
+        <br><br>
+        <label for="selectWPF1">Wahlpflichtfach 1</label>
+        <select id="selectWPF1" onchange="select_wpf('1')">
+            <option disabled selected>--Wahlpflichtfach auswaehlen--</option>
+            <option value="AdB,1">Aspekte der Biologie</option>
+            <option value="AdC,1">Aspekte der Chemie</option>
+            <option value="AdP,1">Aspekte der Physik</option>
+            <option value="AdP,1">Aspekte der Psychologie</option>
+            <option value="EBC,1">English Book Club</option>
+            <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
+            <option value="Info,1">Informatik</option>
+            <option value="IBS,1">International Business Studies</option>
+            <option value="IP,1">Internationale Politik</option>
+            <option value="K,0">Kunst</option>
+            <option value="Mu,0">Musik</option>
+            <option value="SPs,1">Sozialpsychologie</option>
+            <option value="So,1">Soziologie</option>
+            <option value="Sp,1">Spanisch</option>
+            <option value="SdG,1">Spektrum der Gesundheit</option>
+            <option value="SuAT,0">Studier- und Arbeitstechniken </option>
+            <option value="SzG,0">Szenisches Gestalten</option>
+            <option value="WA,1">Wirtschaft aktuell</option>
+            <option value="WuR,1">Wirtschaft und Recht</option>
+        </select>
+        <br>
+        <br>
+        <label for="selectWPF2">Wahlpflichtfach 2</label>
+        <select id="selectWPF2" onchange="select_wpf('2')">
+            <option disabled selected>--Wahlpflichtfach auswaehlen--</option>
+            <option value="AdB,1">Aspekte der Biologie</option>
+            <option value="AdC,1">Aspekte der Chemie</option>
+            <option value="AdP,1">Aspekte der Physik</option>
+            <option value="AdP,1">Aspekte der Psychologie</option>
+            <option value="EBC,1">English Book Club</option>
+            <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
+            <option value="Info,1">Informatik</option>
+            <option value="IBS,1">International Business Studies</option>
+            <option value="IP,1">Internationale Politik</option>
+            <option value="K,0">Kunst</option>
+            <option value="Mu,0">Musik</option>
+            <option value="SPs,1">Sozialpsychologie</option>
+            <option value="So,1">Soziologie</option>
+            <option value="Sp,1">Spanisch</option>
+            <option value="SdG,1">Spektrum der Gesundheit</option>
+            <option value="SuAT,0">Studier- und Arbeitstechniken </option>
+            <option value="SzG,0">Szenisches Gestalten</option>
+            <option value="WA,1">Wirtschaft aktuell</option>
+            <option value="WuR,1">Wirtschaft und Recht</option>
+        </select>
+        <br>
+        <br>
+        <table>
+            <thead>
+            </thead>
+            <tr>
+                <th>Fach</th>
+                <th title="11. Klasse 1. Halbjahr">11/1</th>
+                <th title="11. Klasse 2. Halbjahr">11/2</th>
+                <th title="12. Klasse 1. Halbjahr">12/1</th>
+                <th title="12. Klasse 2. Halbjahr">12/2</th>
+                <th title="Abschlusspruefung">AP</th>
+            </tr>
+
+            <tbody>
+            <tr>
+                <td title="Deutsch">D</td>
+                <td></td>
+                <td><input id="1;0" onchange="setGrades('1;0')" type="number" min="0" max="15"></td>
+                <td><input id="2;0" onchange="setGrades('2;0')" type="number" min="0" max="15"></td>
+                <td><input id="3;0" onchange="setGrades('3;0')" type="number" min="0" max="15"></td>
+                <td><input id="4;0" onchange="setGrades('4;0')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td title="Englisch">E</td>
+                <td></td>
+                <td><input id="1;1" onchange="setGrades('1;1')" type="number" min="0" max="15"></td>
+                <td><input id="2;1" onchange="setGrades('2;1')" type="number" min="0" max="15"></td>
+                <td><input id="3;1" onchange="setGrades('3;1')" type="number" min="0" max="15"></td>
+                <td><input id="4;1" onchange="setGrades('4;1')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td title="Mathe">M</td>
+                <td></td>
+                <td><input id="1;2" onchange="setGrades('1;2')" type="number" min="0" max="15"></td>
+                <td><input id="2;2" onchange="setGrades('2;2')" type="number" min="0" max="15"></td>
+                <td><input id="3;2" onchange="setGrades('3;2')" type="number" min="0" max="15"></td>
+                <td><input id="4;2" onchange="setGrades('4;2')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td id="profilFach0">PF 0</td>
+                <td></td>
+                <td><input id="1;3" onchange="setGrades('1;3')" type="number" min="0" max="15"></td>
+                <td><input id="2;3" onchange="setGrades('2;3')" type="number" min="0" max="15"></td>
+                <td><input id="3;3" onchange="setGrades('3;3')" type="number" min="0" max="15"></td>
+                <td><input id="4;3" onchange="setGrades('4;3')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td>--</td>
+            </tr>
+            <tr>
+                <td title="Geschichte">G</td>
+                <td><input id="0;4" onchange="setGrades('0;4')" type="number" min="0" max="15"></td>
+                <td><input id="1;4" onchange="setGrades('1;4')" type="number" min="0" max="15"></td>
+                <td></td>
+                <td></td>
+    
+            </tr>
+            <tr>
+                <td title="Sozialkunde">Sk</td>
+                <td></td>
+                <td></td>
+                <td><input id="2;4" onchange="setGrades('0;4')" type="number" min="0" max="15"></td>
+                <td><input id="3;4" onchange="setGrades('1;4')" type="number" min="0" max="15"></td>
+             
+    
+            </tr>
+            <tr>
+                <td title="Religion|Ethik">R/Et</td>
+                <td></td>
+                <td></td>
+                <td><input id="2;5" onchange="setGrades('2;5')" type="number" min="0" max="15"></td>
+                <td><input id="3;5" onchange="setGrades('3;5')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td>--</td>
+            </tr>
+            <tr>
+                <td id="profilFach1">PF 1</td>
+                <td></td>
+                <td><input id="1;6" onchange="setGrades('1;6')" type="number" min="0" max="15"></td>
+                <td><input id="2;6" onchange="setGrades('2;6')" type="number" min="0" max="15"></td>
+                <td><input id="3;6" onchange="setGrades('3;6')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td id="profilFach2">PF 2</td>
+                <td></td>
+                <td class="diff"><input id="2;7" onchange="setGrades('1;7')" type="number" min="0" max="15"></td>
+                <td><input id="2;7" onchange="setGrades('2;7')" type="number" min="0" max="15"></td>
+                <td><input id="3;7" onchange="setGrades('3;7')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td id="profilFach3">PF 3</td>
+                <td></td>
+                <td></td>
+                <td><input id="2;8" onchange="setGrades('2;8')" type="number" min="0" max="15"></td>
+                <td><input id="3;8" onchange="setGrades('3;8')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr style="display:none;" class="diff">
+                <td id="profilFach4">PF 4</td>
+                <td><input id="0;9" onchange="setGrades('0;9')" type="number" min="0" max="15"></td>
+                <td><input id="1;9" onchange="setGrades('1;9')" type="number" min="0" max="15"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>---</td>
+            </tr>
+            <tr>
+                <td id="wpf1">WPF 1</td>
+                <td></td>
+                <td></td>
+                <td><input id="2;10" onchange="setGrades('2;10')" type="number" min="0" max="15"></td>
+                <td><input id="3;10" onchange="setGrades('3;10')" type="number" min="0" max="15"></td>
+            </tr>
+            <tr>
+                <td id="wpf2">WPF 2</td>
+                <td></td>
+                <td></td>
+                <td><input id="2;11" onchange="setGrades('2;11')" type="number" min="0" max="15"></td>
+                <td><input id="3;11" onchange="setGrades('3;11')" type="number" min="0" max="15"></td>
+            </tr>
+              <tr>
+                <td>---</td>
+            </tr>
+            <tr>
+                <td title="Fachpraktikum">FPK</td>
+                <td><input id="0;12" onchange="setGrades('0;12')" type="number" min="0" max="15"></td>
+                <td><input id="1;12" onchange="setGrades('1;12')" type="number" min="0" max="15"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td title="Fachreferat">FR</td>
+                <td></td>
+                <td></td>
+                <td rowpan="2"><input id="2;13" onchange="setGrades('2;13')" type="number" min="0" max="15"></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="erg"></div>
+        <br>
+        <br>
+          <footer>Alle Angaben ohne Gewähr</footer>
+    </body>
+
+    <script src="main.js"></script>
+</html>

@@ -52,3 +52,10 @@ button:hover {
 	background-color: rgba(252, 217, 153, 0.411);
 	border-radius: 10%;
 }
+
+tr.show{
+	display: table-row !important;
+}
+td.show {
+	visibility: hidden;
+}

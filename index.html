@@ -19,8 +19,8 @@
             <option value="3">Sozialwesen</option>
         </select>
         <br><br>
-        <label for="selectWPF">Wahlpflichtfach</label>
-        <select id="selectWPF" onchange="select_wpf()">
+        <label for="selectWPF1">Wahlpflichtfach</label>
+        <select id="selectWPF1" onchange="select_wpf()">
             <option disabled selected>--Wahlpflichtfach auswaehlen--</option>
             <option value="AdB,1">Aspekte der Biologie</option>
             <option value="AdC,1">Aspekte der Chemie</option>
@@ -49,8 +49,8 @@
             </thead>
             <tr>
                 <th>Fach</th>
-                <th title="1. Halbjahr">1. HJ</th>
-                <th title="2. Halbjahr">2. HJ</th>
+                <th title="1. Halbjahr">12/1</th>
+                <th title="2. Halbjahr">12/2</th>
                 <th title="Abschlusspruefung">AP</th>
             </tr>
 
@@ -110,13 +110,16 @@
                 <td><input id="0;8" onchange="setGrades('0;8')" type="number" min="0" max="15"></td>
                 <td><input id="1;8" onchange="setGrades('1;8')" type="number" min="0" max="15"></td>
             </tr>
-            <tr style="display:none;" id="rowPF4">
+            <tr style="display:none;" class="diff">
                 <td id="profilFach4">PF 4</td>
                 <td><input id="0;9" onchange="setGrades('0;9')" type="number" min="0" max="15"></td>
                 <td><input id="1;9" onchange="setGrades('1;9')" type="number" min="0" max="15"></td>
             </tr>
+              <tr>
+                <td>---</td>
+            </tr>
             <tr>
-                <td id="wpf">WPF</td>
+                <td id="wpf1">WPF</td>
                 <td><input id="0;10" onchange="setGrades('0;10')" type="number" min="0" max="15"></td>
                 <td><input id="1;10" onchange="setGrades('1;10')" type="number" min="0" max="15"></td>
             </tr>
