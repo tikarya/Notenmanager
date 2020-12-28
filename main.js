@@ -102,6 +102,10 @@ function checkCrossing(){
     allhy.sort(function(a,b) {
         return a[0]-b[0]
     });
+    let possible_cross =4;
+    if (condition) {
+        
+    }
     grade_crossed.forEach(element => {
         const id = (element[1] + ";" + element[2]).toString();
         document.getElementById(id).className = undefined;
