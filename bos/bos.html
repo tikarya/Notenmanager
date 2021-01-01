@@ -13,6 +13,8 @@
     </head>
     <body>
         <h1><a href="../index.html">Notenmanager</a> BOS</h1>
+
+       
         <label for="select">Zweig</label>
         <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
             <option disabled selected>--Zweig auswaehlen--</option>
@@ -46,6 +48,8 @@
             <option value="WuR,1">Wirtschaft und Recht</option>
         </select>
         <br>
+        <button width="40" onclick="delete_save();" id="delete">Auswahl loeschen</button>
+        <br>  
         <br>
         <table>
             <thead>
@@ -133,6 +137,7 @@
         <div id="erg"></div>
         <br>
         <br>
+
           <footer>Alle Angaben ohne Gewähr</footer>
     </body>
 

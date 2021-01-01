@@ -13,6 +13,11 @@ try {
     }
     
 } catch (error) {
-    console.log(error);
+    // catch erros if theres nothing in local Storage
+    //console.log(error);
 }
 
+function delete_save(){
+    localStorage.clear();
+    location.reload();
+}
