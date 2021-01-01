@@ -9,7 +9,7 @@ let grade_count = 0;
 //grades = [[12,11,10,5,8,11,12,13,15,,5,12],[8,11,12,11,5,14,7,8,9,,11],[2,6,4,8]];
 
 //onchange for each grade Input
-function setGrades(id){
+function select_grade(id){
 // get the node form DOM
   let grade = document.getElementById(id);
   // split id into usable indexes [0=type (1,2 HJ//AP);1=subject]
@@ -35,6 +35,10 @@ function setGrades(id){
         grade.className = "warning";
         grade.placeholder = "!";
     }
+}
+function set_grades(id,value){
+    let grade = document.getElementById(id);
+    grade.value = value;
 }
 
 function checkCrossing(){

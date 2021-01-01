@@ -44,7 +44,6 @@ function set_fr(fr){
     document.getElementById("select").disabled = true;
 }
 //----------------------------------------------------------------------------------------------------------
-// basically same thing for Fr but with WPF
 function select_wpf(id){
     // get node for table
     const selectedWPF = document.getElementById("selectWPF"+id);
