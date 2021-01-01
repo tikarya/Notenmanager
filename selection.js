@@ -41,7 +41,8 @@ function select_fr(fr){
       const element = fr.pf[i];
       document.getElementById("profilFach"+i).innerText = element[0];
       document.getElementById("profilFach"+i).title = element[1];
-  }
+    }
+    document.getElementById("select").disabled = true;
 }
 // basically same thing for Fr but with WPF
 function select_wpf(id){
@@ -65,4 +66,5 @@ function select_wpf(id){
     }else{
         node.className = "";
     }
+    selectedWPF.disabled = true;
 }
