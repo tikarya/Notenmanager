@@ -5,6 +5,9 @@
     <!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../img/logo.png">
+    <script>
+        const localKey = "FOS";
+    </script>
     <head>
     </head>
     <body>
@@ -12,8 +15,8 @@
         <label for="select">Zweig</label>
         <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
             <option disabled selected>--Zweig auswaehlen--</option>
-            <option value="1">Gesundheit</option>
             <option value="0">Technik</option>
+            <option value="1">Gesundheit</option>
             <option value="2">Wirtschaft und Verwaltung</option>
             <option value="3">Sozialwesen</option>
         </select>
@@ -217,7 +220,7 @@
         <br>
           <footer>Alle Angaben ohne Gewähr</footer>
     </body>
-
     <script src="../main.js"></script>
     <script src="../selection.js"></script>
+    <script src="../get_save.js"></script>
 </html>

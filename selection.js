@@ -1,4 +1,6 @@
 "use strict";
+// Storage object
+let localObject = {};
 
 // Constructor for a Fachrichtung, with its name, profile subjects and type of calculation
 function fachrichtung(_id,_name,_profilsubjects,_calcdif = false){
@@ -7,12 +9,6 @@ function fachrichtung(_id,_name,_profilsubjects,_calcdif = false){
     this.profilsubjects = _profilsubjects;
     this.calcdif        = _calcdif;
 };
-// Constructor for WPF, with name and shortname for presentation and validation if it counts twards the calculation
-function wahlpflichtfach(_name,_shortname,_validation){
-    this.name   = _name;
-    this.sname  = _shortname;
-    this.valid  = _validation;
-}
 
 const tec       = new fachrichtung(0,"Technik",                     [["Ph","Physik"],["T","Technik"],["Ch","Chemie"],["M+","Mathe Additum"]]);
 const health    = new fachrichtung(1,"Gesundheit",                  [["GHW","Gesundheitswissenschaften"],["KoInt","Kommunikation und Interaktion"],["Ch","Chemie"],["Bio","Biologie"]]);
@@ -24,7 +20,8 @@ const frs = [tec,health,eco,social];
 
 //Selecting and displaying the Fr and saving selection in Local Storage
 function select_fr(fr){
-    localStorage.setItem("fr",JSON.stringify(fr));
+    localObject.FR = fr;
+    localStorage.setItem(localKey,JSON.stringify(localObject));
     set_fr(fr);
 }
 function set_fr(fr){
@@ -44,6 +41,16 @@ function set_fr(fr){
     document.getElementById("select").disabled = true;
 }
 //----------------------------------------------------------------------------------------------------------
+// Constructor for WPF, with name and shortname for presentation and validation if it counts twards the calculation
+function wahlpflichtfach(_id,_listNR,_name,_shortname,_validation){
+    this.id     = _id;
+    this.listNR = _listNR;
+    this.name   = _name;
+    this.sname  = _shortname;
+    this.valid  = _validation;
+}
+
+
 function select_wpf(id){
     // get node for table
     const selectedWPF = document.getElementById("selectWPF"+id);
@@ -52,13 +59,14 @@ function select_wpf(id){
     const vals = selectedWPF.options[selectedWPF.selectedIndex].value.split(",");
 
     // make WPF object and save it to local Storage
-    const wpf = new wahlpflichtfach(wpfname,vals[0],vals[1]);
-    localStorage.setItem("wpf"+id,JSON.stringify(wpf));
-    set_wpf(id,wpf);
+    const wpf = new wahlpflichtfach(id,selectedWPF.selectedIndex,wpfname,vals[0],vals[1]);
+    localObject["WPF"+id] = wpf;
+    localStorage.setItem(localKey,JSON.stringify(localObject));
+    set_wpf(wpf);
 }
 
-function set_wpf(id,wpf){
-    const node = document.getElementById("wpf"+id);
+function set_wpf(wpf){
+    const node = document.getElementById("wpf"+wpf.id);
     node.innerText = wpf.sname;
     node.title = wpf.name;
         
@@ -70,7 +78,7 @@ function set_wpf(id,wpf){
         }
 
     // disable input for the wpf
-    document.getElementById("selectWPF"+id).disabled = true;
+    document.getElementById("selectWPF"+wpf.id).disabled = true;
     
     // // disable the selected wpf in the other select
     // let otherid = 2;
