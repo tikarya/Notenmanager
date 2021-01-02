@@ -41,18 +41,18 @@ function set_fr(fr){
     document.getElementById("select").disabled = true;
 }
 //----------------------------------------------------------------------------------------------------------
-// Constructor for WPF, with name and shortname for presentation and validation if it counts twards the calculation
+// Constructor for WPF
 function wahlpflichtfach(_id,_listNR,_name,_shortname,_validation){
-    this.id     = _id;
-    this.listNR = _listNR;
-    this.name   = _name;
+    this.id     = _id;          // mainly for FOS since they have 2 WPFs
+    this.listNR = _listNR;      // corresponds to the html select options index
+    this.name   = _name;    
     this.sname  = _shortname;
-    this.valid  = _validation;
+    this.valid  = _validation;  // if its grade counts twards the calculation
 }
 
-
+//get input from select (option onchange)
 function select_wpf(id){
-    // get node for table
+    // get node from select
     const selectedWPF = document.getElementById("selectWPF"+id);
     // get node contents
     const wpfname = selectedWPF.options[selectedWPF.selectedIndex].text;
@@ -64,25 +64,26 @@ function select_wpf(id){
     localStorage.setItem(localKey,JSON.stringify(localObject));
     set_wpf(wpf);
 }
-
+// put contents of wpf into table
 function set_wpf(wpf){
     const node = document.getElementById("wpf"+wpf.id);
     node.innerText = wpf.sname;
     node.title = wpf.name;
         
-    // validating if WPF counts into calculation; see HTML list
+    // validating if WPF counts into calculation; indicating by visual color change (CSS class)
         if(wpf.valid==false){
             node.className = "notCounted";
         }else{
             node.className = "";
         }
 
-    // disable input for the wpf
+    // disable input for the wpf select
     document.getElementById("selectWPF"+wpf.id).disabled = true;
     
-    // // disable the selected wpf in the other select
-    // let otherid = 2;
-    // if (id = 2) {
-    //     otherid =1;
-    // }
+    // disable the selected wpf in the other select for FOS
+    if (localKey=="FOS") {
+        let otherid = (wpf.id == 1) ? 2:1;
+        document.getElementById("selectWPF"+otherid)[wpf.listNR].disabled = true;
+    }
+
 }
