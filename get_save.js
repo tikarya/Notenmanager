@@ -40,11 +40,6 @@ try {
     //console.log(error);
 }
 
-function set_grades(id,value){
-    let grade = document.getElementById(id);
-    grade.value = value;
-}  
-
 function delete_save(){
     localStorage.removeItem(localKey);
     location.reload();
