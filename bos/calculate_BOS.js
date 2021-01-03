@@ -1,3 +1,4 @@
+"use strict";
 function gradeObject(){
     this.array      = [new Array(12),new Array(11),new Array(4)];
     this.count      = 0;
@@ -34,12 +35,6 @@ function select_grade(id){
             grade.placeholder = "!";
         }
     }
-
-function set_grades(id,value){
-        let grade = document.getElementById(id);
-        grade.value = value;
-}
-
     // calculate the average
 // function calculate(){
 //     let all = 0;
