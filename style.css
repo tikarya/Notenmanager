@@ -67,3 +67,8 @@ tr.show{
 td.show {
 	visibility: hidden;
 }
+
+.invalid{
+	border-color: goldenrod;
+
+}

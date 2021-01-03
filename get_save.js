@@ -18,6 +18,23 @@ try {
         document.getElementById("selectWPF2").value = object.WPF2.sname+","+object.WPF2.valid;
         set_wpf(object.WPF2); 
     }
+    if (object.grades) {
+       for (let i = 0; i < object.grades.array.length; i++) {        
+           const gradez = object.grades.array[i];
+        
+           for (let j = 0; j < gradez.length; j++) {
+            console.log(j);
+            
+               if (gradez[j]) {                
+                    const grade = gradez[j];
+                    if (grade) {
+                        set_grades(grade[1]+";"+grade[2],grade[0]);
+                    }
+                }
+           }
+       }
+        
+    }
     
 } catch (error) {
     //if sht is null error won't be shown
