@@ -19,12 +19,11 @@ try {
         set_wpf(object.WPF2); 
     }
     if (object.grades) {
+        grades = object.grades;
        for (let i = 0; i < object.grades.array.length; i++) {        
            const gradez = object.grades.array[i];
         
            for (let j = 0; j < gradez.length; j++) {
-            console.log(j);
-            
                if (gradez[j]) {                
                     const grade = gradez[j];
                     if (grade) {
@@ -37,7 +36,7 @@ try {
     }
     
 } catch (error) {
-    //if sht is null error won't be shown
+    //if sth is null error won't be shown
     //console.log(error);
 }
 
