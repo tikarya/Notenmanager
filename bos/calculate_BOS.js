@@ -1,74 +1,31 @@
 "use strict";
 
 function gradeObject(){
-    this.array      = [new Array(12),new Array(11),new Array(4)];
+    this.array      = [new Array(12),new Array(11),new Array(4),new Array(4)];
     this.count      = 0;
     this.crossed    = [];
 }
 let grades = new gradeObject();
 
-function checkCrossing(){
-    let allhy = grades.array[0].concat(grades.array[1]);
-    
-    allhy.sort(function(a,b) {
-        if (a === b) {
-                return 0;
-        }else if (a === null) {
-                return 1;
-        }else if (b === null) {
-            return -1;
-        }else{
-            return a[0]-b[0] 
-        }   
-
-    });
-
-    if (grades.crossed) {
-        grades.crossed.forEach(element => {
-            if (element) {
-                const id = (element[1] + ";" + element[2]).toString();
-            document.getElementById(id).className = undefined;
-            grades.crossed = [];
-            }
-        });
-    }
-
-    let crossed = 0;
-    let opportunities = grades.count -17;
-    let checked_grades = [];
-    while(crossed < opportunities){
-        
-        let element = allhy[crossed];
-        const already_crossed = checked_grades.findIndex((el)=> el == element[2]);
-        if (already_crossed < 0) {
+function checkCounting(subject,type){
+    if(subject != grades.array[0].length-1              // disregarding FR
+        &&(type < grades.array.length-2)                // disregarding APs
+        && grades.array[type][subject]== undefined){    // disregarding already counted grades
+        if ((subject == 10 && localObject.WPF1.valid == 0)) {
             
-       
-        if (element[2]==allhy[crossed+1][2]){
-
-            if (element[0]>allhy[crossed+1][0]) {
-                opportunities++;
-                crossed++;
-            }
+        }else{
+            //Counts input grades of HYs for crossing them out
+            grades.count += 1;
         }
-        element = allhy[crossed];
-        checked_grades[crossed] = element[2];
-
-        grades.crossed[crossed] = element;
         
-        const id = (element[1] + ";" + element[2]).toString();
-        const node = document.getElementById(id);
-        node.className = "warning";
-        if (element[2]==allhy[crossed+1][2] && element[0]==allhy[crossed+1][0]) {
-            opportunities++;
-            crossed++;  
-        }
-    }else{
-        opportunities++;
     }
-        crossed++;
-    }
+}
 
-
+function getAllHY(){
+    return grades.array[0].concat(grades.array[1]);
+}
+function getOppotunities(){
+    return 17;
 }
 // calculate the average
 // function calculate(){

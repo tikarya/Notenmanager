@@ -109,17 +109,7 @@ function select_grade(id){
     
     // validate input and set if valid
     if(grade.value<16&&grade.value>=0){
-        if(subject != grades.array[0].length-1              // disregarding APs
-            &&(type < grades.array.length-1)                // disregarding FR
-            && grades.array[type][subject]== undefined){    // disregarding already counted grades
-            if ((subject == 10 && localObject.WPF1.valid == 0)) {
-                
-            }else{
-                //Counts input grades of HYs for crossing them out
-                grades.count += 1;
-            }
-            
-        }
+        checkCounting(subject,type);
 
         grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
         localObject.grades = grades;
@@ -139,4 +129,70 @@ function set_grades(id,value){
     let grade = document.getElementById(id);
     grade.value = value;
 }  
-    
+
+function checkCrossing(){
+
+    let allhy = getAllHY();
+    // for (let i = 1; i < grades.array.length-1; i++) {
+    //     allhy = allhy.concat(grades.array[i]);
+    // }
+    allhy.sort(function(a,b) {
+        if (a === b) {
+                return 0;
+        }else if (a === null) {
+                return 1;
+        }else if (b === null) {
+            return -1;
+        }else{
+            return a[0]-b[0] 
+        }   
+
+    });
+
+    if (grades.crossed) {
+        grades.crossed.forEach(element => {
+            if (element) {
+                const id = (element[1] + ";" + element[2]).toString();
+            document.getElementById(id).className = undefined;
+            grades.crossed = [];
+            }
+        });
+    }
+
+    let crossed = 0;
+    let opportunities = grades.count -getOppotunities();
+    let checked_grades = [];
+    while(crossed < opportunities){
+        
+        let element = allhy[crossed];
+        const already_crossed = checked_grades.findIndex((el)=> el == element[2]);
+        if (already_crossed < 0) {
+            
+       
+        if (element[2]==allhy[crossed+1][2]){
+
+            if (element[0]>allhy[crossed+1][0]) {
+                opportunities++;
+                crossed++;
+            }
+        }
+        element = allhy[crossed];
+        checked_grades[crossed] = element[2];
+
+        grades.crossed[crossed] = element;
+        
+        const id = (element[1] + ";" + element[2]).toString();
+        const node = document.getElementById(id);
+        node.className = "warning";
+        if (element[2]==allhy[crossed+1][2] && element[0]==allhy[crossed+1][0]) {
+            opportunities++;
+            crossed++;  
+        }
+    }else{
+        opportunities++;
+    }
+        crossed++;
+    }
+
+
+}
