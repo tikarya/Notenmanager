@@ -2,6 +2,10 @@
 // Storage object
 let localObject = {};
 
+//----------------------------------------------------------------------------------------------------------
+//                                            FachRichtungen
+//----------------------------------------------------------------------------------------------------------
+
 // Constructor for a Fachrichtung, with its name, profile subjects and type of calculation
 function fachrichtung(_id,_name,_profilsubjects,_calcdif = false){
     this.id             = _id;
@@ -10,6 +14,7 @@ function fachrichtung(_id,_name,_profilsubjects,_calcdif = false){
     this.calcdif        = _calcdif;
 };
 
+//fr objects for each available fr
 const tec       = new fachrichtung(0,"Technik",                     [["Ph","Physik"],["T","Technik"],["Ch","Chemie"],["M+","Mathe Additum"]]);
 const health    = new fachrichtung(1,"Gesundheit",                  [["GHW","Gesundheitswissenschaften"],["KoInt","Kommunikation und Interaktion"],["Ch","Chemie"],["Bio","Biologie"]]);
 const eco       = new fachrichtung(2,"Wirtschaft und Verwaltung",   [["BWR","Betriebswirtschaftslehre mit Rechnungswesen"],["VWL","Volkswirtschaftslehre"],["NW","Naturwissenschaften"],["IT","Informatik"],["R","Rechtslehre"]],   true);
@@ -40,7 +45,11 @@ function set_fr(fr){
     }
     document.getElementById("select").disabled = true;
 }
+
 //----------------------------------------------------------------------------------------------------------
+//                                            WahlPlichtFach
+//----------------------------------------------------------------------------------------------------------
+
 // Constructor for WPF
 function wahlpflichtfach(_id,_listNR,_name,_shortname,_validation){
     this.id     = _id;          // mainly for FOS since they have 2 WPFs
@@ -71,11 +80,11 @@ function set_wpf(wpf){
     node.title = wpf.name;
         
     // validating if WPF counts into calculation; indicating by visual color change (CSS class)
-        if(wpf.valid==false){
-            node.className = "notCounted";
-        }else{
-            node.className = "";
-        }
+    if(wpf.valid==false){
+        node.className = "notCounted";
+    }else{
+        node.className = "";
+    }
 
     // disable input for the wpf select
     document.getElementById("selectWPF"+wpf.id).disabled = true;
@@ -87,7 +96,9 @@ function set_wpf(wpf){
     }
 
 }
-
+//----------------------------------------------------------------------------------------------------------
+//                                            grades
+//----------------------------------------------------------------------------------------------------------
 function select_grade(id){
     // get the node form DOM
     let grade = document.getElementById(id);
@@ -97,26 +108,32 @@ function select_grade(id){
     const subject = selector[1];
     
     // validate input and set if valid
-      if(grade.value<16&&grade.value>=0){
-            if((type < grades.array.length-1) && grades.array[type][subject]== undefined){
+    if(grade.value<16&&grade.value>=0){
+        if(subject != grades.array[0].length-1              // disregarding APs
+            &&(type < grades.array.length-1)                // disregarding FR
+            && grades.array[type][subject]== undefined){    // disregarding already counted grades
+            if ((subject == 10 && localObject.WPF1.valid == 0)) {
                 
+            }else{
                 //Counts input grades of HYs for crossing them out
-                    grades.count += 1;
+                grades.count += 1;
             }
-            grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
-
-            localObject.grades = grades;
-            localStorage.setItem(localKey,JSON.stringify(localObject));
-
-            grade.className = "";
             
-        }else{
-        // if invalid delete input and display visible varning throug CSS+txt message
-            grade.value = "";
-            grade.className = "invalid";
-            grade.placeholder = "!";
         }
+
+        grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
+        localObject.grades = grades;
+        localStorage.setItem(localKey,JSON.stringify(localObject));
+        grade.className = "";
+            
+    }else{
+        // if invalid delete input and display visible varning throug CSS+txt message
+        grade.value = "";
+        grade.className = "invalid";
+        grade.placeholder = "!";
     }
+    checkCrossing();
+}
 
 function set_grades(id,value){
     let grade = document.getElementById(id);

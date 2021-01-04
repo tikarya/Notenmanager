@@ -32,7 +32,7 @@ try {
                 }
            }
        }
-        
+       checkCrossing();
     }
     
 } catch (error) {
