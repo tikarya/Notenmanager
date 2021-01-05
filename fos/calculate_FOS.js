@@ -24,10 +24,32 @@ function checkCounting(subject,type){
 }
 
 function getAllHY(){
-    let allhy = grades.array[0];
-    for (let i = 1; i < grades.array.length-2; i++) {
-        allhy = allhy.concat(grades.array[i]);
+
+    let array = [grades.array[0].slice(0),grades.array[1].slice(0),grades.array[2].slice(0),grades.array[3].slice(0)];
+    array[0].length -= 1;
+    array[1].length -= 1;
+    array[2].length -= 1;   
+
+    if (localObject.WPF2.valid == 0) {
+        array[2].length -= 2;
+        array[3].length -= 2;
     }
+    if (localObject.WPF1.valid == 0) {
+        array[2].length -= 1;
+        array[3].length -= 1;
+    }
+
+    let allhy = array[0];
+    for (let i = 1; i < array.length; i++) {
+        allhy = allhy.concat(array[i]);
+    }
+    // hy1.length -= 1;
+    // if (localObject.WPF1.valid == 0) {
+    //     hy1.length -= 1;
+    //     hy2.length -= 1;
+    // }
+    
+    console.log(allhy);
     return allhy;
 }
 function getOppotunities(){

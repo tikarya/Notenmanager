@@ -22,7 +22,16 @@ function checkCounting(subject,type){
 }
 
 function getAllHY(){
-    return grades.array[0].concat(grades.array[1]);
+    let hy1 = grades.array[0].slice(0);
+    let hy2 = grades.array[1].slice(0);
+    hy1.length -= 1;
+    if (localObject.WPF1.valid == 0) {
+        hy1.length -= 1;
+        hy2.length -= 1;
+    }
+    
+    const array = hy1.concat(hy2);
+    return array;
 }
 function getOppotunities(){
     return 17;
