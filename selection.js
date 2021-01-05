@@ -123,6 +123,9 @@ function select_grade(id){
         grade.placeholder = "!";
     }
     checkCrossing();
+    if (grades.count >= getOppotunities()) {
+        calculate();
+    }
 }
 
 function set_grades(id,value){
