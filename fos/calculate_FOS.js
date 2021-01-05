@@ -43,13 +43,6 @@ function getAllHY(){
     for (let i = 1; i < array.length; i++) {
         allhy = allhy.concat(array[i]);
     }
-    // hy1.length -= 1;
-    // if (localObject.WPF1.valid == 0) {
-    //     hy1.length -= 1;
-    //     hy2.length -= 1;
-    // }
-    
-    console.log(allhy);
     return allhy;
 }
 function getOppotunities(){
