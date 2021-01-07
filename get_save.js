@@ -33,6 +33,9 @@ try {
            }
        }
        checkCrossing();
+       if (grades.count >= getOppotunities()) {
+        calculate();
+    }
     }
     
 } catch (error) {

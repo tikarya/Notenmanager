@@ -40,24 +40,35 @@ function getOppotunities(){
 //calculate the average
 function calculate(){
     let all = 0;
-    for (let i = 0; i < grades.array.length; i++) {
+    for (let i = 0; i < grades.array.length-1; i++) {
         const array = grades.array[i];
         for (let j = 0; j < array.length; j++) { 
 
-            if(array[j] != undefined){
-                let element = array[j][0];
-//                 APs have to be counted twice
-                if(i == 2){
-                    element *= 2;
+            if(array[j] != (null||undefined)){
+                let element = array[j];
+                // APs have to be counted twice
+                if (!(grades.crossed.some((el)=> el === element))){
+                    if(element[1] == 2){
+        
+                        if (grades.array[i+1][j]!= (null||undefined)) {
+                            all += Math.round((((element[0]*2)+ grades.array[i+1][j][0])/3))*2;
+                        }else{
+                            all += element[0] * 2;
+                        }
+                    }else{
+                        all += element[0];
+                    }
+                    
+                   
                 }
-                all += element;
-                console.log(element);
-                console.log(all);
             }
         }
     }
-    let erg = 17/3-5*all/390;
-    console.log(erg,all);
-    document.getElementById("erg").innerText ="Notendurchschnitt: "+ (erg).toFixed(2);
+    console.log(all);
+    let erg = (17/3-5*all/375).toFixed(2);
+    if (erg< 1) {
+        erg = "1.00";
+    }
+    document.getElementById("erg").innerText ="Notendurchschnitt: "+ (erg);
         
 }

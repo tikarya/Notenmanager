@@ -151,7 +151,7 @@ function checkCrossing(){
         }   
 
     });
-
+    console.log(allhy);
     if (grades.crossed) {
         grades.crossed.forEach(element => {
             if (element) {
@@ -173,10 +173,10 @@ function checkCrossing(){
             
        
         if (element[2]==allhy[crossed+1][2]){
-
             if (element[0]>allhy[crossed+1][0]) {
                 opportunities++;
                 crossed++;
+                
             }
         }
         element = allhy[crossed];
