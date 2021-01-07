@@ -49,8 +49,8 @@ function calculate(){
                 // APs have to be counted twice
                 if (!(grades.crossed.some((el)=> el === element))){
                     if(element[1] == 2){
-        
                         if (grades.array[i+1][j]!= (null||undefined)) {
+                            
                             all += Math.round((((element[0]*2)+ grades.array[i+1][j][0])/3))*2;
                         }else{
                             all += element[0] * 2;
@@ -58,13 +58,12 @@ function calculate(){
                     }else{
                         all += element[0];
                     }
-                    
-                   
+
                 }
             }
         }
     }
-    console.log(all);
+
     let erg = (17/3-5*all/375).toFixed(2);
     if (erg< 1) {
         erg = "1.00";

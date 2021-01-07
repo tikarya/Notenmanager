@@ -31,12 +31,12 @@ function getAllHY(){
     array[2].length -= 1;   
 
     if (localObject.WPF2.valid == 0) {
-        array[2].length -= 2;
-        array[3].length -= 2;
+        array[2].splice(array[2].lastIndexOf(grades.array[2][11]),1);
+        array[3].splice(array[2].lastIndexOf(grades.array[3][11]),1);
     }
     if (localObject.WPF1.valid == 0) {
-        array[2].length -= 1;
-        array[3].length -= 1;
+        array[2].splice(array[2].lastIndexOf(grades.array[2][10]),1);
+        array[3].splice(array[2].lastIndexOf(grades.array[3][10]),1);
     }
 
     let allhy = array[0];
@@ -59,9 +59,11 @@ function calculate(){
                 let element = array[j];
                 // APs have to be counted twice
                 if (!(grades.crossed.some((el)=> el === element))){
+                    //console.log(element);
+
                     if(element[1] == 4){
-        
                         if (grades.array[i+1][j]!= (null||undefined)) {
+                            console.log(grades.array[i+1][j]);
                             all += Math.round((((element[0]*2)+ grades.array[i+1][j][0])/3))*2;
                         }else{
                             all += element[0] * 2;

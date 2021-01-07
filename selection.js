@@ -151,7 +151,7 @@ function checkCrossing(){
         }   
 
     });
-    console.log(allhy);
+    
     if (grades.crossed) {
         grades.crossed.forEach(element => {
             if (element) {
