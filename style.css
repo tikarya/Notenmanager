@@ -19,12 +19,11 @@ input{
 }
 label{
 	display: inline-block;
-	min-width:100px;
 }
 select{
 	color:white;
 	background-color: inherit;
-	min-width: 100px;
+	min-width: 216px;
 }
 ul{
 	list-style:circle;
@@ -41,13 +40,17 @@ button {
 	color:white;
 	font-size: inherit;
 	background-color:inherit;
-    transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	margin:10px 10px 10px 0px;
 	padding:10px 10px 10px 3px;
-	margin-top:10px;
 	border: none;
+	border-radius: 5px;
 }
-
+#btntxt{
+	text-align: center;
+}
 button:hover {
+	cursor: pointer;
     background-color:	#e61e55;
 }
 .warning, .warning:active{

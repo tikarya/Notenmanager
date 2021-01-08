@@ -14,7 +14,7 @@
         <h1><a href="../index.html">Notenmanager</a> FOS</h1>
         <label for="select">Zweig</label>
         <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
-            <option disabled selected>--Zweig auswaehlen--</option>
+            <option disabled selected>--Zweig auswählen--</option>
             <option value="0">Technik</option>
             <option value="1">Gesundheit</option>
             <option value="2">Wirtschaft und Verwaltung</option>
@@ -23,7 +23,7 @@
         <br><br>
         <label for="selectWPF1">Wahlpflichtfach 1</label>
         <select id="selectWPF1" onchange="select_wpf('1')">
-            <option disabled selected>--Wahlpflichtfach auswaehlen--</option>
+            <option disabled selected>--Wahlpflichtfach auswählen--</option>
             <option value="AdB,1">Aspekte der Biologie</option>
             <option value="AdC,1">Aspekte der Chemie</option>
             <option value="AdP,1">Aspekte der Physik</option>
@@ -48,7 +48,7 @@
         <br>
         <label for="selectWPF2">Wahlpflichtfach 2</label>
         <select id="selectWPF2" onchange="select_wpf('2')">
-            <option disabled selected>--Wahlpflichtfach auswaehlen--</option>
+            <option disabled selected>--Wahlpflichtfach auswählen--</option>
             <option value="AdB,1">Aspekte der Biologie</option>
             <option value="AdC,1">Aspekte der Chemie</option>
             <option value="AdP,1">Aspekte der Physik</option>
@@ -70,7 +70,7 @@
             <option value="WuR,1">Wirtschaft und Recht</option>
         </select>
         <br>  
-        <button width="40" onclick="delete_save();" id="delete">Auswahl loeschen</button>
+        <button width="40" onclick="delete_save();" id="delete">Auswahl löschen 🗑️</button>
         <br>
         <br>
         <table>
@@ -222,12 +222,12 @@
         <br>
           <footer>Alle Angaben ohne Gewähr</footer>
           <br>
-            <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')">Exprotieren</button>
-            <br>
+            <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')">Exprotieren ⬇️</button>
+
             <input accept=".json" type="file" id="import" onchange="import_storage()" style="display:none">
-            <button onclick="document.getElementById('import').click()" id="fileImport">Importieren</button>
+            <button onclick="document.getElementById('import').click()" id="fileImport">Importieren ⬆️</button>
     </body>
     <script src="calculate_FOS.js"></script>
-    <script src="../selection.js"></script>
-    <script src="../get_save.js"></script>
+    <script src="../js/selection.js"></script>
+    <script src="../js/get_save.js"></script>
 </html>

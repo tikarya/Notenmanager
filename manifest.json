@@ -1,8 +1,8 @@
 {
     "name": "Notenmanager",
-    "short_name": "NotenM",
+    "short_name": "NotnMngr",
     "start_url":"index.html",
-    "description": "Notenmanager for Bavarian BOS",
+    "description": "Notenmanager BOS|FOS Bayern (NES)",
     "display": "standalone",
     "icons": [{
       "src": "img/icon_smol.png",

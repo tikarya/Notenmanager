@@ -64,7 +64,7 @@ function import_storage(){
 
     reader.readAsText(filepath);
     reader.onload = function(){
-        if (confirm("Daten aus der Datei verwenden?")) {
+        if (confirm("Daten aus " +document.getElementById("import").files[0].name+ " verwenden?")) {
             localStorage.setItem(localKey,JSON.parse(reader.result));
             location.reload();
         }
