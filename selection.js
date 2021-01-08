@@ -106,9 +106,16 @@ function select_grade(id){
     const selector = id.split(";");
     const type = selector[0];
     const subject = selector[1];
-    
+   
     // validate input and set if valid
-    if(grade.value<16&&grade.value>=0){
+    if (grade.value =="") {
+        grades.count--;
+        grades.array[type][subject] = null;
+        localObject.grades = grades;
+        localStorage.setItem(localKey,JSON.stringify(localObject));
+        grade.className = "";
+
+    }else if(grade.value<16&&grade.value>=0){
         checkCounting(subject,type);
 
         grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
