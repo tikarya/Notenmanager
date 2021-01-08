@@ -221,6 +221,11 @@
         <br>
         <br>
           <footer>Alle Angaben ohne Gewähr</footer>
+          <br>
+            <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')">Exprotieren</button>
+            <br>
+            <input accept=".json" type="file" id="import" onchange="import_storage()" style="display:none">
+            <button onclick="document.getElementById('import').click()" id="fileImport">Importieren</button>
     </body>
     <script src="calculate_FOS.js"></script>
     <script src="../selection.js"></script>

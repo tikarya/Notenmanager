@@ -47,3 +47,31 @@ function delete_save(){
     localStorage.removeItem(localKey);
     location.reload();
 }
+
+
+//exprot try
+function export_storage(content, fileName, contentType) {
+    const a = document.createElement("a");
+    const file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+//import try
+function import_storage(){
+    let filepath = document.getElementById("import").files[0];
+    let reader = new FileReader();
+
+    reader.readAsText(filepath);
+    reader.onload = function(){
+        if (confirm("Daten aus der Datei verwenden?")) {
+            localStorage.setItem(localKey,JSON.parse(reader.result));
+            location.reload();
+        }
+        
+    };
+    reader.onerror = function() {
+        console.log(reader.error);
+    };
+}

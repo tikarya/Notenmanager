@@ -13,8 +13,7 @@
     </head>
     <body>
         <h1><a href="../index.html">Notenmanager</a> BOS</h1>
-
-       
+ 
         <label for="select">Zweig</label>
         <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
             <option disabled selected>--Zweig auswaehlen--</option>
@@ -145,6 +144,11 @@
         <br>
 
           <footer>Alle Angaben ohne Gewähr</footer>
+        <br>
+        <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')">Exprotieren</button>
+        <br>
+        <input accept=".json" type="file" id="import" onchange="import_storage()" style="display:none">
+        <button onclick="document.getElementById('import').click()" id="fileImport">Importieren</button>
     </body>
 
     <script src="calculate_BOS.js"></script>
