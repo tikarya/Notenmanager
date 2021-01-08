@@ -72,3 +72,6 @@ td.show {
 	border-color: goldenrod;
 
 }
+input:disabled{
+	border-color: rgba(143, 143, 143, 0.3);
+}

@@ -39,8 +39,7 @@ try {
     }
     
 } catch (error) {
-    //if sth is null error won't be shown
-    //console.log(error);
+    //if sth is null exeptions won't be shown
 }
 
 function delete_save(){

@@ -44,6 +44,7 @@ function set_fr(fr){
       document.getElementById("profilFach"+i).title = element[1];
     }
     document.getElementById("select").disabled = true;
+    enable_grades();
 }
 
 //----------------------------------------------------------------------------------------------------------
@@ -88,6 +89,7 @@ function set_wpf(wpf){
 
     // disable input for the wpf select
     document.getElementById("selectWPF"+wpf.id).disabled = true;
+    enable_grades();
     
     // disable the selected wpf in the other select for FOS
     if (localKey=="FOS") {
@@ -99,6 +101,13 @@ function set_wpf(wpf){
 //----------------------------------------------------------------------------------------------------------
 //                                            grades
 //----------------------------------------------------------------------------------------------------------
+function enable_grades(){
+    if(localObject.FR && localObject.WPF1 && (localKey == "BOS" || localObject.WPF2)){
+    document.querySelectorAll('input[type=number]').forEach((element) =>element.disabled = false);
+    }
+}
+
+
 function select_grade(id){
     // get the node form DOM
     let grade = document.getElementById(id);
