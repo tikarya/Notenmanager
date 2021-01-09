@@ -123,14 +123,18 @@ function select_grade(id){
         localObject.grades = grades;
         localStorage.setItem(localKey,JSON.stringify(localObject));
         grade.className = "";
+        checkCrossing();
+        set_average(subject,type);
 
     }else if(grade.value<16&&grade.value>=0){
         checkCounting(subject,type);
-
         grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
         localObject.grades = grades;
         localStorage.setItem(localKey,JSON.stringify(localObject));
         grade.className = "";
+        checkCrossing();
+        set_average(subject,type);
+        
             
     }else{
         // if invalid delete input and display visible varning throug CSS+txt message
@@ -138,7 +142,7 @@ function select_grade(id){
         grade.className = "invalid";
         grade.placeholder = "!";
     }
-    checkCrossing();
+   
     if (grades.count >= getOppotunities()) {
         calculate();
     }
@@ -150,11 +154,8 @@ function set_grades(id,value){
 }  
 
 function checkCrossing(){
-
     let allhy = getAllHY();
-    // for (let i = 1; i < grades.array.length-1; i++) {
-    //     allhy = allhy.concat(grades.array[i]);
-    // }
+
     allhy.sort(function(a,b) {
         if (a === b) {
                 return 0;
@@ -167,27 +168,27 @@ function checkCrossing(){
         }   
 
     });
-    
+
     if (grades.crossed) {
         grades.crossed.forEach(element => {
             if (element) {
                 const id = (element[1] + ";" + element[2]).toString();
             document.getElementById(id).className = undefined;
             grades.crossed = [];
+            set_average(element[2]);
             }
         });
     }
 
     let crossed = 0;
-    let opportunities = grades.count -getOppotunities();
+    let opportunities = grades.count-getOppotunities();
     let checked_grades = [];
     while(crossed < opportunities){
         
         let element = allhy[crossed];
         const already_crossed = checked_grades.findIndex((el)=> el == element[2]);
         if (already_crossed < 0) {
-            
-       
+  
         if (element[2]==allhy[crossed+1][2]){
             if (element[0]>allhy[crossed+1][0]) {
                 opportunities++;
@@ -197,12 +198,14 @@ function checkCrossing(){
         }
         element = allhy[crossed];
         checked_grades[crossed] = element[2];
-
         grades.crossed[crossed] = element;
-        
+
+        set_average(element[2]);
+
         const id = (element[1] + ";" + element[2]).toString();
         const node = document.getElementById(id);
-        node.className = "warning";
+        node.className = "crossed";
+
         if (element[2]==allhy[crossed+1][2] && element[0]==allhy[crossed+1][0]) {
             opportunities++;
             crossed++;  

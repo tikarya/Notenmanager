@@ -4,6 +4,9 @@ function gradeObject(){
     this.array      = [new Array(13),new Array(13),new Array(14),new Array(12),new Array(4),new Array(4)];
     this.count      = 0;
     this.crossed    = [];
+    this.average    = new Array(14);
+    this.less4HY    = 0;
+    this.less3AP    = 0;
 }
 let grades = new gradeObject();
 

@@ -35,7 +35,11 @@ try {
        checkCrossing();
        if (grades.count >= getOppotunities()) {
         calculate();
-    }
+        }
+        for (let i = 0; i < grades.average[2].length; i++) {
+            const element = grades.average[2][i];
+            document.getElementById(i).innerHTML = element;
+        }
     }
     
 } catch (error) {

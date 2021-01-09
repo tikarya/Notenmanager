@@ -10,7 +10,7 @@ body{
 	margin: 20px;
 }
 input{
-	border:white 1px solid;
+	border:whitesmoke 1px solid;
 	background-color: inherit;
 	border-style:solid;
 	border-radius: 3px;
@@ -60,9 +60,10 @@ button:hover {
 	cursor: pointer;
     background-color:	#e61e55;
 }
-.warning, .warning:active{
-	border-color: tomato;
-	background-color: rgba(255, 120, 96, 0.411);
+.crossed, .crossed:active{
+	border-color: transparent;
+	color: rgba(119, 119, 119, 0.7);
+	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 10%;
 }
 .notCounted{
@@ -77,7 +78,10 @@ tr.show{
 td.show {
 	visibility: hidden;
 }
-
+td:last-child{
+	width: 40px;
+	text-align: center;
+}
 .invalid{
 	border-color: goldenrod;
 
