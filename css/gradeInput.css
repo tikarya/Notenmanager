@@ -15,6 +15,7 @@ input:disabled{
 
 label{
 	display: inline-block;
+	min-width: 135px;
 }
 select{
 	color:white;
