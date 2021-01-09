@@ -47,8 +47,10 @@ try {
 }
 
 function delete_save(){
-    localStorage.removeItem(localKey);
-    location.reload();
+    if (confirm("Alle Eingaben löschen?")) {
+        localStorage.removeItem(localKey);
+        location.reload();
+    }
 }
 
 

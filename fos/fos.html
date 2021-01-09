@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gradeInput.css">
     <link rel="icon" href="../img/logo.png">
     <script>
         const localKey = "FOS";
@@ -11,68 +12,70 @@
     <head>
     </head>
     <body>
+       
         <h1><a href="../index.html">Notenmanager</a> FOS</h1>
-        <!-- <label for="select">Zweig</label> -->
-        <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
-            <option disabled selected>--Zweig auswählen--</option>
-            <option value="0">Technik</option>
-            <option value="1">Gesundheit</option>
-            <option value="2">Wirtschaft und Verwaltung</option>
-            <option value="3">Sozialwesen</option>
-        </select>
-        <br><br>
-        <!-- <label for="selectWPF1">Wahlpflichtfach 1</label> -->
-        <select id="selectWPF1" onchange="select_wpf('1')">
-            <option disabled selected>--Wahlpflichtfach auswählen--</option>
-            <option value="AdB,1">Aspekte der Biologie</option>
-            <option value="AdC,1">Aspekte der Chemie</option>
-            <option value="AdP,1">Aspekte der Physik</option>
-            <option value="AdP,1">Aspekte der Psychologie</option>
-            <option value="EBC,1">English Book Club</option>
-            <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
-            <option value="Info,1">Informatik</option>
-            <option value="IBS,1">International Business Studies</option>
-            <option value="IP,1">Internationale Politik</option>
-            <option value="K,0">Kunst</option>
-            <option value="Mu,0">Musik</option>
-            <option value="SPs,1">Sozialpsychologie</option>
-            <option value="So,1">Soziologie</option>
-            <option value="Sp,1">Spanisch</option>
-            <option value="SdG,1">Spektrum der Gesundheit</option>
-            <option value="SuAT,0">Studier- und Arbeitstechniken </option>
-            <option value="SzG,0">Szenisches Gestalten</option>
-            <option value="WA,1">Wirtschaft aktuell</option>
-            <option value="WuR,1">Wirtschaft und Recht</option>
-        </select>
+        
+        <div id="main">
+        <div class="select">
+            <label class="desk" for="select">Fachrichtung</label>
+            <select id="select" onchange="select_fr(frs[document.getElementById('select').value])">
+                <option disabled selected>--Zweig auswählen--</option>
+                <option value="0">Technik</option>
+                <option value="1">Gesundheit</option>
+                <option value="2">Wirtschaft und Verwaltung</option>
+                <option value="3">Sozialwesen</option>
+            </select>
+            <br>
+            <label class="desk" for="selectWPF1">Wahlpflichtfach 1</label>
+            <select id="selectWPF1" onchange="select_wpf('1')">
+                <option disabled selected>--Wahlpflichtfach auswählen--</option>
+                <option value="AdB,1">Aspekte der Biologie</option>
+                <option value="AdC,1">Aspekte der Chemie</option>
+                <option value="AdP,1">Aspekte der Physik</option>
+                <option value="AdP,1">Aspekte der Psychologie</option>
+                <option value="EBC,1">English Book Club</option>
+                <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
+                <option value="Info,1">Informatik</option>
+                <option value="IBS,1">International Business Studies</option>
+                <option value="IP,1">Internationale Politik</option>
+                <option value="K,0">Kunst</option>
+                <option value="Mu,0">Musik</option>
+                <option value="SPs,1">Sozialpsychologie</option>
+                <option value="So,1">Soziologie</option>
+                <option value="Sp,1">Spanisch</option>
+                <option value="SdG,1">Spektrum der Gesundheit</option>
+                <option value="SuAT,0">Studier- und Arbeitstechniken </option>
+                <option value="SzG,0">Szenisches Gestalten</option>
+                <option value="WA,1">Wirtschaft aktuell</option>
+                <option value="WuR,1">Wirtschaft und Recht</option>
+            </select>
+            <br>
+            <label class="desk" for="selectWPF2">Wahlpflichtfach 2</label>
+            <select id="selectWPF2" onchange="select_wpf('2')">
+                <option disabled selected>--Wahlpflichtfach auswählen--</option>
+                <option value="AdB,1">Aspekte der Biologie</option>
+                <option value="AdC,1">Aspekte der Chemie</option>
+                <option value="AdP,1">Aspekte der Physik</option>
+                <option value="AdP,1">Aspekte der Psychologie</option>
+                <option value="EBC,1">English Book Club</option>
+                <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
+                <option value="Info,1">Informatik</option>
+                <option value="IBS,1">International Business Studies</option>
+                <option value="IP,1">Internationale Politik</option>
+                <option value="K,0">Kunst</option>
+                <option value="Mu,0">Musik</option>
+                <option value="SPs,1">Sozialpsychologie</option>
+                <option value="So,1">Soziologie</option>
+                <option value="Sp,1">Spanisch</option>
+                <option value="SdG,1">Spektrum der Gesundheit</option>
+                <option value="SuAT,0">Studier- und Arbeitstechniken </option>
+                <option value="SzG,0">Szenisches Gestalten</option>
+                <option value="WA,1">Wirtschaft aktuell</option>
+                <option value="WuR,1">Wirtschaft und Recht</option>
+            </select>
+        </div>
         <br>
-        <br>
-        <!-- <label for="selectWPF2">Wahlpflichtfach 2</label> -->
-        <select id="selectWPF2" onchange="select_wpf('2')">
-            <option disabled selected>--Wahlpflichtfach auswählen--</option>
-            <option value="AdB,1">Aspekte der Biologie</option>
-            <option value="AdC,1">Aspekte der Chemie</option>
-            <option value="AdP,1">Aspekte der Physik</option>
-            <option value="AdP,1">Aspekte der Psychologie</option>
-            <option value="EBC,1">English Book Club</option>
-            <option value="GwR,1">Gesundheitswirtschaft und Recht </option>
-            <option value="Info,1">Informatik</option>
-            <option value="IBS,1">International Business Studies</option>
-            <option value="IP,1">Internationale Politik</option>
-            <option value="K,0">Kunst</option>
-            <option value="Mu,0">Musik</option>
-            <option value="SPs,1">Sozialpsychologie</option>
-            <option value="So,1">Soziologie</option>
-            <option value="Sp,1">Spanisch</option>
-            <option value="SdG,1">Spektrum der Gesundheit</option>
-            <option value="SuAT,0">Studier- und Arbeitstechniken </option>
-            <option value="SzG,0">Szenisches Gestalten</option>
-            <option value="WA,1">Wirtschaft aktuell</option>
-            <option value="WuR,1">Wirtschaft und Recht</option>
-        </select>
-        <br>  
-        <button width="40" onclick="delete_save();" id="delete">Auswahl löschen 🗑️</button>
-        <br>
-        <br>
+        <div class="table">
         <table>
             <thead>
             </thead>
@@ -84,7 +87,7 @@
                 <th title="12. Klasse 2. Halbjahr">12/2</th>
                 <th title="Abschlussprüfung">AP</th>
                 <th title="mündliche Abschlussprüfung">mündl.</th>
-                <th title="Durchschnitt">Ø</th
+                <th title="Durchschnitt">Ø</th>
             </tr>
 
             <tbody>
@@ -255,19 +258,25 @@
             </tr>
             </tbody>
         </table>
+        
         <br>
-        <br>
-        <div id="eval"></div>
-        <br>
-        <div id="erg"></div>
-        <br>
-        <br>
-          <footer>Alle Angaben ohne Gewähr</footer>
-          <br>
-            <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')">Exprotieren ⬇️</button>
+        <div class="result">
+            <div id="eval"></div>
+            <br>
+            <div id="erg"></div>
+            <br>
+            <br>
+        </div>
+    </div>
+        <div class="buttons">
+            <button onclick="delete_save();" id="delete"><div class="desk">Auswahl löschen </div>🗑️</button>
+            <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')"><div class="desk">Exprotieren </div>⬇️</button>
 
             <input accept=".json" type="file" id="import" onchange="import_storage()" style="display:none">
-            <button onclick="document.getElementById('import').click()" id="fileImport">Importieren ⬆️</button>
+            <button onclick="document.getElementById('import').click()" id="fileImport"><div class="desk">Importieren </div> ⬆️</button>
+        </div>
+    </div>
+        <footer>Alle Angaben ohne Gewähr</footer>
     </body>
     <script src="calculate_FOS.js"></script>
     <script src="../js/math.js"></script>

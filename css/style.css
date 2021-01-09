@@ -1,37 +1,15 @@
 @media only screen and (max-width: 600px) {
-    body {
-      margin-left:20px !important;
+		.desk{
+			display: none;
     }
   }
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	background-color:#1a2332;
 	color:white;
-	margin:20px 20px 20px 30% ;
+	margin: 20px;
 }
-input{
-	border:whitesmoke 1px solid;
-	background-color: inherit;
-	border-style:solid;
-	border-radius: 3px;
-	color:inherit;
-	font-family: Lucida Console;
-	height: 20px;
-	width: 40px;
-	margin: 5px;
-}
-label{
-	display: inline-block;
-}
-select{
-	color:white;
-	border-style:solid;
-	border-radius: 3px;
-	background-color: inherit;
-	border-color: white;
-			border-width: thin;
-	min-width: 216px;
-}
+
 ul{
 	list-style:circle;
 }
@@ -43,49 +21,15 @@ a:hover{
 	color:#e61e55;
 	text-decoration: underline;
 }
-button {
-	border: none;
-	background-color: rgba(0, 0, 0, 0.2);
-	color:white;
-	font-size: inherit;
-	transition-duration: 0.4s;
-	margin:10px 10px 10px 0px;
-	padding:10px;
-	border-radius: 5px;
+#main{
 }
-#btntxt{
-	text-align: center;
+.buttons{
+	display: inline-block;
+	order: -1;;
 }
-button:hover {
-	cursor: pointer;
-    background-color:	#e61e55;
+.table{
+	order: 1;
 }
-.crossed, .crossed:active{
-	border-color: transparent;
-	color: rgba(119, 119, 119, 0.7);
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 10%;
-}
-.notCounted{
-	border-color: goldenrod;
-	background-color: rgba(252, 217, 153, 0.411);
-	border-radius: 10%;
-}
-
-tr.show{
-	display: table-row !important;
-}
-td.show {
-	visibility: hidden;
-}
-td:last-child{
-	width: 40px;
-	text-align: center;
-}
-.invalid{
-	border-color: goldenrod;
-
-}
-input:disabled{
-	border-color: rgba(143, 143, 143, 0.3);
+button div{
+	display: inline;
 }
