@@ -45,30 +45,6 @@ function getAPCount(){
 function getPointsPossible(){
     return 375;
 }
-
-function evaluate(){
-    grades.less4HY = 0;
-
-    const allhy = getAllHY().sort(function(a,b) {
-        if (a === b) {
-                return 0;
-        }else if (a === null) {
-                return 1;
-        }else if (b === null) {
-            return -1;
-        }else{
-            return a[0]-b[0] 
-        }   
-
-    });
-    console.log(allhy);
-    allhy.forEach((element)=>{
-        if(element != (null||undefined)){
-            if(element[0]< 4 && !(grades.crossed.some((el)=> el === element))){
-                grades.less4HY = (element[0]==0)? (grades.less4HY+2):(grades.less4HY +1);
-                console.log(element);
-            }
-        }
-    });
-
+function getLowestPoints(){
+    return [156,130];
 }

@@ -60,3 +60,6 @@ function getAPCount(){
 function getPointsPossible(){
     return 600;
 }
+function getLowestPoints(){
+    return [240,200];
+}
