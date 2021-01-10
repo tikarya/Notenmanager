@@ -4,6 +4,7 @@
 function calculate(){
     let all = 0;
     grades.less3AP = 0;
+    let counted = 0;
     for (let i = 0; i < grades.array.length-1; i++) {
         const array = grades.array[i];
         for (let j = 0; j < array.length; j++) { 
@@ -21,8 +22,10 @@ function calculate(){
                         }
                             // APs have to be counted multiple times
                             all += apGrade * getAPCount();
+                            counted += getAPCount();
                     }else{
                         all += element[0];
+                        counted++;
                     }
 
                 }
@@ -30,11 +33,23 @@ function calculate(){
         }
     }
     evaluate(all);
+    console.log(all);
     let erg = (17/3-5*all/getPointsPossible()).toFixed(2);
+    console.log(erg);
     if (erg< 1) {
         erg = "1.00";
     }
-    document.getElementById("erg").innerText ="Notendurchschnitt: "+ (erg);
+    if(all == 0){
+        erg ="6.00";
+    }
+    document.getElementById("erg").innerHTML ="Notendurchschnitt: &nbsp"+ pointToComma(erg);
+                                                
+    if (all == 1 || erg<1) {
+        document.getElementById("erg").innerHTML += "<br>Mathematischer Durchschnitt &nbsp"+pointToComma((17/3-5*all/getPointsPossible()).toFixed(2));
+    }
+    document.getElementById("erg").innerHTML += "<br>Mit gesamt "+all+" Punkten"
+                                            + "<br>in "+counted +" eingebrachten Leistungen"
+                                            + "<br>und durchschnittlich "+ (all/counted).toFixed(2) + " Punkten.";
         
 }
 
@@ -69,7 +84,7 @@ function set_average(subject){
         const element = grades.average[0][i];
         if (element != (undefined||null) && grades.average[1][i]!= (undefined||null)) {
             grades.average[2][i] = (grades.average[1][i]/element).toFixed(2);
-            document.getElementById(i).innerHTML = grades.average[2][i];
+            document.getElementById(i).innerHTML = pointToComma(grades.average[2][i]);
         }
     }
 }
@@ -100,4 +115,8 @@ function evaluate(all){
         }
     }
 
+}
+
+function  pointToComma(floatVal){
+    return floatVal.toString().replace(/\./g, ',');
 }

@@ -115,7 +115,8 @@ function select_grade(id){
     const selector = id.split(";");
     const type = selector[0];
     const subject = selector[1];
-   
+    const regex = RegExp("^[1]?[0-9]{0,1}$");
+
     // validate input and set if valid
     if (grade.value =="") {
         grades.count--;
@@ -126,7 +127,7 @@ function select_grade(id){
         checkCrossing();
         set_average(subject,type);
 
-    }else if(grade.value<16&&grade.value>=0){
+    }else if(regex.test(grade.value) && grade.value<16 && grade.value>=0){
         checkCounting(subject,type);
         grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
         localObject.grades = grades;
