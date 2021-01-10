@@ -49,7 +49,7 @@ function calculate(){
     }
     document.getElementById("erg").innerHTML += "<br>Mit gesamt "+all+" Punkten"
                                             + "<br>in "+counted +" eingebrachten Leistungen"
-                                            + "<br>und durchschnittlich "+ (all/counted).toFixed(2) + " Punkten.";
+                                            + "<br>und durchschnittlich "+ pointToComma((all/counted).toFixed(2)) + " Punkten.";
         
 }
 
