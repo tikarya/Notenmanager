@@ -87,14 +87,14 @@ function evaluate(all){
     let node = document.getElementById("eval");
 
     if (grades.less4HY>2) {
-        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse langen nicht";
+        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse nicht ausreichend";
     }else if(grades.less4HY > 1 && all<getLowestPoints()[0]){
-        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse in Kombi mit AP langen nicht";
+        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse in Kombination mit AP nicht ausreichend";
     }else if (grades.less4HY > 0 && all<getLowestPoints()[1]){
-        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse in Kombi mit AP langen nicht";
+        node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse in Kombination mit AP nicht ausreichend";
     }else{
         if (grades.less3AP>2) {
-            node.innerHTML = "Nicht bestanden :(<br>Abschlusspruefungsergebnisse langen nicht";
+            node.innerHTML = "Nicht bestanden :(<br>Abschlusspruefungsergebnisse nicht ausreichend";
         }else{
             node.innerHTML = "Bestanden :)";
         }
