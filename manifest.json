@@ -6,9 +6,9 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/Notenmanager",
-  "start_url": "Notenmanager/index.html",
+  "start_url": "/index.html",
   "icons": [{
-    "src": "Notenmanager/img/logo.png",
+    "src": "img/logo.png",
     "sizes": "512x512",
     "type": "img/png"
   }]
