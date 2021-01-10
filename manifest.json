@@ -5,13 +5,8 @@
     "description": "Notenmanager BOS|FOS Bayern (NES)",
     "display": "standalone",
     "icons": [{
-      "src": "img/icon_smol.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "img/icon_huge.png",
-      "sizes": "96x96",
+      "src": "img/logo.png",
+      "sizes": "606*590",
       "type": "image/png"
     }]
   }
