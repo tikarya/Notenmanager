@@ -8,8 +8,8 @@
   "scope": "/Notenmanager",
   "start_url": "Notenmanager/index.html",
   "icons": [{
-    "src": "images/touch/homescreen48.png",
+    "src": "Notenmanager/img/logo.png",
     "sizes": "512x512",
-    "type": "img/logo.png"
+    "type": "img/png"
   }]
 }
