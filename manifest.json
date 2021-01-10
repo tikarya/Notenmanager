@@ -5,8 +5,8 @@
   "background_color": "#1a2332",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/index.html",
+  "scope": "/Notenmanager",
+  "start_url": "Notenmanager/index.html",
   "icons": [{
     "src": "images/touch/homescreen48.png",
     "sizes": "512x512",
