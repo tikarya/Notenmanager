@@ -12,20 +12,25 @@ function calculate(){
             if(array[j] != (null||undefined)){
                 let element = array[j];
                 if (!(grades.crossed.some((el)=> el === element))){
-                    if(element[1] == grades.array.length-2){
-                        let apGrade= element[0];
-                        if (grades.array[i+1][j]!= (null||undefined)) {
-                            apGrade = Math.round((((element[0]*2)+ grades.array[i+1][j][0])/3));
-                        }
-                        if (apGrade <4) {
-                            grades.less3AP = (apGrade ==0)?(grades.less3AP+2):(grades.less3AP+1);
-                        }
-                            // APs have to be counted multiple times
-                            all += apGrade * getAPCount();
-                            counted += getAPCount();
+                    if ((localKey == "FOS" && j == 11 && localObject.WPF1.valid == 0 || j == 12 && localObject.WPF2.valid == 0)
+                    || (localKey == "BOS" && j ==10 && localObject.WPF1.valid == 0)) {
+                        
                     }else{
-                        all += element[0];
-                        counted++;
+                        if(element[1] == grades.array.length-2){
+                            let apGrade= element[0];
+                            if (grades.array[i+1][j]!= (null||undefined)) {
+                                apGrade = Math.round((((element[0]*2)+ grades.array[i+1][j][0])/3));
+                            }
+                            if (apGrade <4) {
+                                grades.less3AP = (apGrade ==0)?(grades.less3AP+2):(grades.less3AP+1);
+                            }
+                                // APs have to be counted multiple times
+                                all += apGrade * getAPCount();
+                                counted += getAPCount();
+                        }else{
+                            all += element[0];
+                            counted++;
+                        }
                     }
 
                 }
@@ -33,9 +38,7 @@ function calculate(){
         }
     }
     evaluate(all);
-    console.log(all);
     let erg = (17/3-5*all/getPointsPossible()).toFixed(2);
-    console.log(erg);
     if (erg< 1) {
         erg = "1.00";
     }
