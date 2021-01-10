@@ -1,13 +1,15 @@
 {
-    "name": "Notenmanager",
-    "short_name": "NotnMngr",
-    "start_url":"index.html",
-    "description": "Notenmanager BOS|FOS Bayern (NES)",
-    "display": "standalone",
-    "icons": [{
-      "src": "img/logo.png",
-      "sizes": "606*590",
-      "type": "image/png"
-    }]
-  }
-  
+  "name": "Notenmanager",
+  "short_name": "Noten",
+  "theme_color": "#e61e55",
+  "background_color": "#1a2332",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/index.html",
+  "icons": [{
+    "src": "images/touch/homescreen48.png",
+    "sizes": "512x512",
+    "type": "img/logo.png"
+  }]
+}
