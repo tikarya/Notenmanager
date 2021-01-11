@@ -39,16 +39,17 @@ function calculate(){
     }
     evaluate(all);
     let erg = (17/3-5*all/getPointsPossible()).toFixed(2);
+    let output = erg;
     if (erg< 1) {
-        erg = "1.00";
+        output = "1.00";
     }
     if(all == 0){
-        erg ="6.00";
+        output ="6.00";
     }
-    document.getElementById("erg").innerHTML ="Notendurchschnitt: &nbsp"+ pointToComma(erg);
-                                                
-    if (all == 1 || erg<1) {
-        document.getElementById("erg").innerHTML += "<br>Mathematischer Durchschnitt &nbsp"+pointToComma((17/3-5*all/getPointsPossible()).toFixed(2));
+    document.getElementById("erg").innerHTML ="Notendurchschnitt: &nbsp"+ pointToComma(output)+"<br>";
+                                        
+    if (all == 0 || erg<1) {
+        document.getElementById("erg").innerHTML += "<br>Mathematischer Durchschnitt &nbsp"+pointToComma((17/3-5*all/getPointsPossible()).toFixed(2))+"<br>";
     }
     document.getElementById("erg").innerHTML += "<br>Mit gesamt "+all+" Punkten"
                                             + "<br>in "+counted +" eingebrachten Leistungen"

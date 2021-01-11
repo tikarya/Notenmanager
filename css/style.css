@@ -32,3 +32,20 @@ a:hover{
 button div{
 	display: inline;
 }
+
+.info p{
+	hyphens: auto;
+	text-align: justify;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 20px;
+	line-height:2em;
+}
+.info{
+	align-items: center;
+}
+.info a{
+	text-decoration: underline;
+	color: #e61e55;
+}

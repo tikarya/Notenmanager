@@ -23,8 +23,12 @@ select{
 	border-radius: 3px;
 	background-color: inherit;
 	border-color: white;
-			border-width: thin;
+	border-width: thin;
 	min-width: 216px;
+	margin: 5px;
+}
+select option{
+	background-color: #1a2332;
 }
 button {
 	border: none;
@@ -63,7 +67,6 @@ td:last-child{
 	background-color: rgba(252, 217, 153, 0.411);
 	border-radius: 10%;
 }
-
 
 .invalid{
 	border-color: goldenrod;
