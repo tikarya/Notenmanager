@@ -182,7 +182,7 @@
           <footer>Alle Angaben ohne Gewähr</footer>
         <br>
         <button onclick="delete_save();" id="delete"><div class="desk">Auswahl löschen </div>🗑️</button>
-        <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')"><div class="desk">Exprotieren </div>⬇️</button>
+        <button onclick="export_storage(JSON.stringify(localStorage.getItem(localKey)),'noten.json','application/json')"><div class="desk">Exportieren </div>⬇️</button>
         <input accept=".json" type="file" id="import" onchange="import_storage()" style="display:none">
         <button onclick="document.getElementById('import').click()" id="fileImport"><div class="desk">Importieren </div> ⬆️</button>
         <a href="../info.html">❓ Hilfe</a>
