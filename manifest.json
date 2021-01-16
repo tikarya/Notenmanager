@@ -1,15 +1,16 @@
 {
   "name": "Notenmanager",
   "short_name": "Noten",
+  "lang": "de-DE",
   "theme_color": "#e61e55",
   "background_color": "#1a2332",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/Notenmanager",
-  "start_url": "/index.html",
+  "scope": "https://tikarya.github.io/Notenmanager/",
+  "start_url": "index.html",
   "icons": [{
     "src": "img/logo.png",
-    "sizes": "512x512",
+    "sizes": "144x144",
     "type": "img/png"
   }]
 }
