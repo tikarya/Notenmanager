@@ -1,22 +1,3 @@
-self.addEventListener('install', (e) => {
-    console.log('[Service Worker] Install');
-});
-const CACHE_NAME = 'Notenmanager-cache-v1';
-const urlsToCache = [
-  '/img/logo.png',
-  '/css/style.css',
-  '/css/gradeInpput.css',
-  '/js/main.js',
-  '/js/get_save.js',
-  '/js/math.js',
-  '/js/selection.js',
-  '/',
-  '/info.html',
-  '/fos/fos.html',
-  'fos/calculate_FOS.js',
-  'bos/bos.html',
-  'bos/calculate_BOS.js'
-];
 /*
  Copyright 2016 Google Inc. All Rights Reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
