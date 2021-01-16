@@ -22,8 +22,8 @@ const RUNTIME = 'runtime';
 const PRECACHE_URLS = [
     'img/logo.png',
     'css/style.css',
-    'css/gradeInpput.css',
-    'js/main.js',
+    'css/gradeInput.css',
+    'main.js',
     'js/get_save.js',
     'js/math.js',
     'js/selection.js',
@@ -39,7 +39,7 @@ const PRECACHE_URLS = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(PRECACHE)
-      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(cache => {cache.addAll(PRECACHE_URLS); console.log(PRECACHE_URLS)})
       .then(self.skipWaiting())
   );
 });
