@@ -20,16 +20,16 @@ const RUNTIME = 'runtime';
 // A list of local resources we always want to be cached.
 // changed to fit Notenmanager
 const PRECACHE_URLS = [
-    '/img/logo.png',
-    '/css/style.css',
-    '/css/gradeInpput.css',
-    '/js/main.js',
-    '/js/get_save.js',
-    '/js/math.js',
-    '/js/selection.js',
-    '/',
-    '/info.html',
-    '/fos/fos.html',
+    'img/logo.png',
+    'css/style.css',
+    'css/gradeInpput.css',
+    'js/main.js',
+    'js/get_save.js',
+    'js/math.js',
+    'js/selection.js',
+    './',
+    'info.html',
+    'fos/fos.html',
     'fos/calculate_FOS.js',
     'bos/bos.html',
     'bos/calculate_BOS.js'
