@@ -88,7 +88,9 @@ function set_average(subject){
         const element = grades.average[0][i];
         if (element != (undefined||null) && grades.average[1][i]!= (undefined||null)) {
             grades.average[2][i] = (grades.average[1][i]/element).toFixed(2);
-            document.getElementById(i).innerHTML = pointToComma(grades.average[2][i]);
+            if (grades.average[2][i] != "NaN"){
+                document.getElementById(i).innerHTML = pointToComma(grades.average[2][i]);
+            }
         }
     }
 }

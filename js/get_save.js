@@ -33,12 +33,15 @@ try {
            }
        }
        checkCrossing();
+       set_oralCount();
        if (grades.count >= getOppotunities()) {
         calculate();
         }
         for (let i = 0; i < grades.average[2].length; i++) {
             const element = grades.average[2][i];
-            document.getElementById(i).innerHTML = element;
+            if (grades.average[2][i] != "NaN") {
+                document.getElementById(i).innerHTML = element;
+            }
         }
     }
     

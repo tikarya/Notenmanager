@@ -140,13 +140,10 @@ function select_grade(id){
         grade.className = "";
         // if oral exam and not english count down and enable other input
         if (type == grades.array.length-1 && subject != 1) {
-            grades.oralGrades --;
-            grades.array[grades.array.length-1].forEach((element,i) => {
-                if (element == (undefined || null)) {
-                    document.getElementById(grades.array.length-1+";"+i).disabled = false;
-                }
-            });
-            
+            let deleted = grades.oralGrades.findIndex((element) => element == subject);
+            grades.oralGrades.splice(deleted,1);
+            localStorage.setItem(localKey,JSON.stringify(localObject));
+            set_oralCount();
         }
         // refresh all calculations
         checkCrossing();
@@ -162,9 +159,9 @@ function select_grade(id){
         grade.className = "";
         checkCrossing();
         set_average(subject,type);
-        // if (type == grades.array.length-1) {
-        //     checkOralOpportunities(subject);
-        // }
+        if (type == grades.array.length-1) {
+            checkOralOpportunities(subject);
+        }
         
             
     }else{
@@ -207,9 +204,9 @@ function checkCrossing(){
         grades.crossed.forEach(element => {
             if (element) {
                 const id = (element[1] + ";" + element[2]).toString();
-            document.getElementById(id).className = undefined;
-            grades.crossed = [];
-            set_average(element[2]);
+                document.getElementById(id).className = undefined;
+                grades.crossed = [];
+                set_average(element[2]);
             }
         });
     }
@@ -254,21 +251,27 @@ function checkCrossing(){
     }
 
 }
-//not working, yet
-/*
+//not working propperly, yet
+
 function checkOralOpportunities(subject){
-    if (grades.oralGrades<2 && subject != 1) {
-        grades.oralGrades++;
+    if (grades.oralGrades.length<2 && subject != 1) {
+        grades.oralGrades.push(subject);
+        localStorage.setItem(localKey,JSON.stringify(localObject));
     }
-    if (grades.oralGrades == 2) {
-        console.log(grades.array[grades.array.length-1]);
-        grades.array[grades.array.length-1].forEach((element,i) => {
-            if (element == (undefined || null)) {
-                
+    set_oralCount();
+}
+function set_oralCount(){
+    if (grades.oralGrades.length == 2) {
+        for (let i = 0; i < grades.array[grades.array.length-1].length; i++) {
+            const element = grades.array[grades.array.length-1][i];
+            if (element == (undefined || null) && i!=1) {
                 document.getElementById(grades.array.length-1+";"+i).disabled = true;
             }
-        });
+            
+        }
+    }else{
+        for (let i = 0; i < grades.array[grades.array.length-1].length; i++) {
+            document.getElementById(grades.array.length-1+";"+i).disabled = false;
+        }
     }
-    
 }
-*/
