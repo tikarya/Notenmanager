@@ -7,6 +7,7 @@ function gradeObject(){
     this.average    = [new Array(15),new Array(15),new Array(15)];
     this.less4HY    = 0;
     this.less3AP    = 0;
+    this.oralGrades = 0;
 }
 let grades = new gradeObject();
 

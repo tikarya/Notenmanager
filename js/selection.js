@@ -55,8 +55,8 @@ function set_fr(fr){
 function wahlpflichtfach(_id,_listNR,_name,_shortname,_validation){
     this.id     = _id;          // mainly for FOS since they have 2 WPFs
     this.listNR = _listNR;      // corresponds to the html select options index
-    this.name   = _name;    
-    this.sname  = _shortname;
+    this.name   = _name;        // Actual name for tooltip
+    this.sname  = _shortname;   // used in table, for compact layout
     this.valid  = _validation;  // if its grade counts twards the calculation
 }
 
@@ -65,30 +65,36 @@ function select_wpf(id){
     // get node from select
     const selectedWPF = document.getElementById("selectWPF"+id);
     // get node contents
-    const wpfname = selectedWPF.options[selectedWPF.selectedIndex].text;
-    const vals = selectedWPF.options[selectedWPF.selectedIndex].value.split(",");
+    const wpfname = selectedWPF.options[selectedWPF.selectedIndex].text;            //Name of WPF
+    const vals = selectedWPF.options[selectedWPF.selectedIndex].value.split(",");   //Seperate the index and the validation form node value
 
-    // make WPF object and save it to local Storage
+    // make WPF object with values form node and save it to local Storage
     const wpf = new wahlpflichtfach(id,selectedWPF.selectedIndex,wpfname,vals[0],vals[1]);
     localObject["WPF"+id] = wpf;
     localStorage.setItem(localKey,JSON.stringify(localObject));
+    
     set_wpf(wpf);
 }
 // put contents of wpf into table
 function set_wpf(wpf){
+    // select right node form table
     const node = document.getElementById("wpf"+wpf.id);
+    // put short name as text and long as tooltip
     node.innerText = wpf.sname;
     node.title = wpf.name;
         
-    // validating if WPF counts into calculation; indicating by visual color change (CSS class)
+    // validating if WPF counts into calculation; indicating by visual color change (CSS class: notCounted)
     if(wpf.valid==false){
         node.className = "notCounted";
     }else{
+    // if not make sure class is reset
         node.className = "";
     }
 
     // disable input for the wpf select
     document.getElementById("selectWPF"+wpf.id).disabled = true;
+
+    // check if all the WPF and the FR are selected
     enable_grades();
     
     // disable the selected wpf in the other select for FOS
@@ -101,13 +107,15 @@ function set_wpf(wpf){
 //----------------------------------------------------------------------------------------------------------
 //                                            grades
 //----------------------------------------------------------------------------------------------------------
+
+// after wpf and fr are selected, the grades can be put in
 function enable_grades(){
     if(localObject.FR && localObject.WPF1 && (localKey == "BOS" || localObject.WPF2)){
     document.querySelectorAll('input[type=number]').forEach((element) =>element.disabled = false);
     }
 }
 
-
+//input for grades
 function select_grade(id){
     // get the node form DOM
     let grade = document.getElementById(id);
@@ -115,48 +123,72 @@ function select_grade(id){
     const selector = id.split(";");
     const type = selector[0];
     const subject = selector[1];
+    // Regular expression to validate the input isn't float or letter etc.
     const regex = RegExp("^[1]?[0-9]{0,1}$");
 
     // validate input and set if valid
     if (grade.value =="") {
+        // remove grade from storage after it got deleted
+        // important for manual crossing
         grades.count--;
+        // delete form working object
         grades.array[type][subject] = null;
         localObject.grades = grades;
+        // renew localstorage
         localStorage.setItem(localKey,JSON.stringify(localObject));
+
         grade.className = "";
+        // if oral exam and not english count down and enable other input
+        if (type == grades.array.length-1 && subject != 1) {
+            grades.oralGrades --;
+            grades.array[grades.array.length-1].forEach((element,i) => {
+                if (element == (undefined || null)) {
+                    document.getElementById(grades.array.length-1+";"+i).disabled = false;
+                }
+            });
+            
+        }
+        // refresh all calculations
         checkCrossing();
         set_average(subject,type);
-
+    //check if grade valid w/regex and size
     }else if(regex.test(grade.value) && grade.value<16 && grade.value>=0){
+        //see if it gets counted to final result
         checkCounting(subject,type);
+        // add to working objects and storage
         grades.array[type][subject] = [parseInt(grade.value),parseInt(type),parseInt(subject)];
         localObject.grades = grades;
         localStorage.setItem(localKey,JSON.stringify(localObject));
         grade.className = "";
         checkCrossing();
         set_average(subject,type);
+        // if (type == grades.array.length-1) {
+        //     checkOralOpportunities(subject);
+        // }
         
             
     }else{
-        // if invalid delete input and display visible varning throug CSS+txt message
+        // if invalid delete input and display visible varning throug CSS class: invalid+txt message
         grade.value = "";
         grade.className = "invalid";
         grade.placeholder = "!";
     }
-   
+    // when enough grades are put in, calculate
     if (grades.count >= getOppotunities()) {
         calculate();
     }
 }
-
+// used to restore grades from local Storage into html input elements (get_save.js)
 function set_grades(id,value){
     let grade = document.getElementById(id);
     grade.value = value;
 }  
 
+// checking which grades won't count into final result
 function checkCrossing(){
+    // all counting halfyear grades
     let allhy = getAllHY();
-
+    // sort them form low to high
     allhy.sort(function(a,b) {
         if (a === b) {
                 return 0;
@@ -169,7 +201,8 @@ function checkCrossing(){
         }   
 
     });
-
+    // remove already crossed grades
+    // important because array gets renewed on each new change/input
     if (grades.crossed) {
         grades.crossed.forEach(element => {
             if (element) {
@@ -180,12 +213,15 @@ function checkCrossing(){
             }
         });
     }
-
+    // number of crossed grades
     let crossed = 0;
+    // number of crossing opportunities
     let opportunities = grades.count-getOppotunities();
+    // grades that have been checked, to check for double cross on one subject
     let checked_grades = [];
+    // actual checking what to cross
+    // while possible number is bigger than already crossed grades
     while(crossed < opportunities){
-        
         let element = allhy[crossed];
         const already_crossed = checked_grades.findIndex((el)=> el == element[2]);
         if (already_crossed < 0) {
@@ -200,13 +236,13 @@ function checkCrossing(){
         element = allhy[crossed];
         checked_grades[crossed] = element[2];
         grades.crossed[crossed] = element;
-
+        // since grade is crossed calculate subject average again
         set_average(element[2]);
-
+        // make crossing visible though CSS class crossed
         const id = (element[1] + ";" + element[2]).toString();
         const node = document.getElementById(id);
         node.className = "crossed";
-
+        // if the grade after is from same subject, hop over it (count goes up by 2)
         if (element[2]==allhy[crossed+1][2] && element[0]==allhy[crossed+1][0]) {
             opportunities++;
             crossed++;  
@@ -217,5 +253,22 @@ function checkCrossing(){
         crossed++;
     }
 
-
 }
+//not working, yet
+/*
+function checkOralOpportunities(subject){
+    if (grades.oralGrades<2 && subject != 1) {
+        grades.oralGrades++;
+    }
+    if (grades.oralGrades == 2) {
+        console.log(grades.array[grades.array.length-1]);
+        grades.array[grades.array.length-1].forEach((element,i) => {
+            if (element == (undefined || null)) {
+                
+                document.getElementById(grades.array.length-1+";"+i).disabled = true;
+            }
+        });
+    }
+    
+}
+*/
