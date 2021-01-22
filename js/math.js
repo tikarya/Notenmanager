@@ -105,7 +105,21 @@ function evaluate(all){
 
     let node = document.getElementById("eval");
 
-    if (grades.less4HY>2) {
+    if (localKey == "FOS" &&(
+    (grades.array[0][grades.array[0].length-1]) == (null||undefined)
+        ||(grades.array[1][grades.array[1].length-1])== (null||undefined)
+        ||(grades.array[0][grades.array[0].length-1][0])== (null||undefined||0)
+        ||(grades.array[1][grades.array[1].length-1][0])== 0)){
+        node.innerHTML = "Nicht bestanden :(<br>Fachpraktische Ausbildung nicht ausreichend"
+    }else if ((localKey == "BOS")&&(
+        grades.array[0][grades.array[0].length-1] == (null||undefined) ||
+        grades.array[0][grades.array[0].length-1][0] == 0)
+        || (localKey == "FOS")&&(
+        grades.array[2][grades.array[2].length-1] == (null||undefined) ||
+        grades.array[2][grades.array[2].length-1][0] == 0)
+    ){
+        node.innerHTML = "Nicht bestanden :(<br>Fachreferat nicht ausreichend";
+    }else if (grades.less4HY>2) {
         node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse nicht ausreichend";
     }else if(grades.less4HY > 1 && all<getLowestPoints()[0]){
         node.innerHTML = "Nicht bestanden :(<br>Halbjahresergebnisse in Kombination mit AP nicht ausreichend";
