@@ -12,5 +12,15 @@
     "src": "img/logo.png",
     "sizes": "144x144",
     "type": "img/png"
+  },{
+    "src": "img/logo512.png",
+    "sizes": "512x512",
+    "type": "img/png"
+  },
+  {
+    "src": "img/logoMaskable.png",
+    "sizes": "512x512",
+    "type": "img/png",
+    "purpose": "any maskable"
   }]
 }
