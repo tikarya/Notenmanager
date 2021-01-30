@@ -35,8 +35,7 @@ function set_fr(fr){
         for (let i = 0; i < nodes.length; i++) {
             const node = nodes[i];
             node.classList.add("show"); 
-        }
-        
+        }    
     }
     for (let i = 0; i < fr.profilsubjects.length; i++) {
       const element = fr.profilsubjects[i];

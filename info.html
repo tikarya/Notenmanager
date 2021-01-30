@@ -12,70 +12,74 @@
         <link rel="icon" href="img/logo.png">
     </head>
     <body>
-            <h1><a href="index.html">Notenmanager</a></h1>
-            <ul>
-                <li><a href="fos/fos.html">FOS</a></li>
-                <li><a href="bos/bos.html">BOS</a></li>
-            </ul>
-            <p>Notenmanager für die 12.Klassen der FOS|BOS Bad Neustadt</p>
-            <p>Alle Daten werden <b>lokal gespeichert und verarbeitet.</b></p>
-            <div class="info">
-                <h3>Auswahl</h3>
-                <p>
+        <h1><a href="index.html">Notenmanager</a></h1>
+        <ul>
+            <li><a href="fos/fos.html">FOS</a></li>
+            <li><a href="bos/bos.html">BOS</a></li>
+        </ul>
+        <p>Notenmanager für die 12.Klassen der FOS|BOS Bad Neustadt</p>
+        <p>Alle Daten werden <b>lokal gespeichert und verarbeitet.</b></p>
+        <div class="info">
+            <h3>Auswahl</h3>
+            <p>
                     Bevor Punkte eingegeben werden können, müssen die Fachrichtung und die Wahlpflichtfächer bzw. -fach ausgewählt sein.<br>
                     Falls bei dieser Angabe Fehler gemacht wurden können diese durch den <a href="#löschen">Löschen Button</a> neu aktiviert werden. (Dies löscht jedoch auch alle weiteren Eingaben.)<br>
                     Durch die Auswahl der Fachrichtung werden auch die richtigen Profilfächer ausgewählt.<br>
                     Wird ein Wahlpflichtfach nicht mit einberechnet wird dieses so <span class="notCounted" title="Musik" style="padding: 3px;">Mu</span> markiert.
-                </p>
+            </p>
 
-                <h3>Punkteeingabe</h3>
-                <p>
-                    Die Punkte können nur als ganze Zahl von 0 bis 15 eingegeben werden.<br>
-                    Falls eine Eingabe fehlerhaft war, wird dies so <input type="number" placeholder="!" disabled class="invalid"> angezeigt.<br>
-                    Alle Punkte können zu jeder Zeit neu eingegeben oder gelöscht werden.
-                </p>
-                <h3>automatische Streichvorschläge</h3>
-                <p>
-                    Wenn die Eingabe die Anzahl einbringungsfähiger Punkte überschreitet, werden automatische Streichvorschläge angezeigt.<br>
-                    Die Note sieht dann so <input type="number" placeholder="3" disabled class="crossed">  aus.<br>
-                    Diese Punkte werden automatisch nicht mit in das Ergebnis aufgenommen.
-                </p>
-                <h3>manuelle Streichung</h3>
-                <p>Die Punktzahl einfach aus dem Eingabefeld löschen.<br>
-                   Achtung, wenn eine andere Note aus dem selben Fach automatisch gestichen wird, müssen weitere Punkte manuell gestichen werden.</p>
-                <h3>Ergebnis</h3>
-                <p>
-                    Nach dem die minimale Anzahl benötigter Punkte eingegeben wurde, wird am Ende der Punktetabelle das Ergebnis angezeigt.<br>
-                    Neben dem Notendurchschnitt und dem Bestehen, wird auch die Gesamtpunktzahl, alle gezählten Punkte (APs doppelt bzw. dreifach), die Anzahl der gezählten Leistungen und die durchschnittlichen Punkte angezeigt.
+            <h3>Punkteeingabe</h3>
+            <p>
+                Die Punkte können nur als ganze Zahl von 0 bis 15 eingegeben werden.<br>
+                Falls eine Eingabe fehlerhaft war, wird dies so <input type="number" placeholder="!" disabled class="invalid"> angezeigt.<br>
+                Alle Punkte können zu jeder Zeit neu eingegeben oder gelöscht werden.
+            </p>
+            <h3>automatische Streichvorschläge</h3>
+            <p>
+                Wenn die Eingabe die Anzahl einbringungsfähiger Punkte überschreitet, werden automatische Streichvorschläge angezeigt.<br>
+                Die Note sieht dann so <input type="number" placeholder="3" disabled class="crossed">  aus.<br>
+                Diese Punkte werden automatisch nicht mit in das Ergebnis aufgenommen.
+            </p>
+            <h3>manuelle Streichung</h3>
+            <p>
+                Die Punktzahl einfach aus dem Eingabefeld löschen.<br>
+                Achtung, wenn eine andere Note aus dem selben Fach automatisch gestichen wird, müssen weitere Punkte manuell gestichen werden.
+            </p>
+            <h3>Ergebnis</h3>
+            <p>
+                Nach dem die minimale Anzahl benötigter Punkte eingegeben wurde, wird am Ende der Punktetabelle das Ergebnis angezeigt.<br>
+                Neben dem Notendurchschnitt und dem Bestehen, wird auch die Gesamtpunktzahl, alle gezählten Punkte (APs doppelt bzw. dreifach), die Anzahl der gezählten Leistungen und die durchschnittlichen Punkte angezeigt.
 
-                </p>
-                <h3 id="löschen">Löschen</h3>
-                <p> <button id="delete" disabled><div class="desk">Auswahl löschen </div>🗑️</button>
-                    Alle eingegeben Werte weden vom Speicher des Browsers gelöscht.</p>
-                <h3 id="export">Exportieren</h3>
-                <p>
-                    <button disabled><div class="desk">Exportieren </div>⬇️</button>
-                    Die aktuelle Eingabe wird auf dem Gerät als JSON Datei gespeichert und können durch <a href="#export">Importieren</a> wieder eingegeben werden.<br>
-                    Dies kann nützlich sein, wenn mehrere Nutzer den Notenmanager mit dem gleichen Browser nutzen.<br>
-                    Oder wenn das Gerät bzw. der Browser gewechselt wird. z.B. Schulcomputer -> Laptop zu Hause oder Firefox -> Chrome.
-                </p>
-                <h3 id="import">Importieren</h3>
-                <p>
-                    <button disabled><div class="desk">Importieren </div> ⬆️</button>
-                    Hier kann die bei <a href="#import">Exportieren</a> heruntergeladene wieder "hochgeladen" werden. <br>
-                    Die gespeicherten Daten werden jedoch immer noch nur lokal verarbeitet.
-                </p>
-                <h3>Rechtliches</h3>
-                <p>
-                    Es wird für keine Angaben Gewähr übernommen. Die Durchschnittswerte können durch z.B. Fehler beim Kürzen anders ausfallen.<br>
-                </p>
-                <h3>Sonstiges</h3>
-                <p>
-                    Der Notenmanager ist im Rahmen eines Fachreferates entstanden. <br>
-                    Der Quellcode kann <a href="https://github.com/tikarya/Notenmanager">hier</a> eingesehen und heruntergeladen werden.<br>
-                    Die Website wird über Git Hub Pages gehostet.<br>
-                    Bei Problemen, Fragen, etc. bei <a href="mailto:tea.4.me0@gmail.com">tea.4.me0@gmail.com</a> melden.
-                </p>
+            </p>
+           <h3 id="löschen">Löschen</h3>
+            <p> 
+                <button id="delete" disabled><div class="desk">Auswahl löschen </div>🗑️</button>
+                Alle eingegeben Werte weden vom Speicher des Browsers gelöscht.
+            </p>
+            <h3 id="export">Exportieren</h3>
+            <p>
+                <button disabled><div class="desk">Exportieren </div>⬇️</button>
+                Die aktuelle Eingabe wird auf dem Gerät als JSON Datei gespeichert und können durch <a href="#export">Importieren</a> wieder eingegeben werden.<br>
+                Dies kann nützlich sein, wenn mehrere Nutzer den Notenmanager mit dem gleichen Browser nutzen.<br>
+                Oder wenn das Gerät bzw. der Browser gewechselt wird. z.B. Schulcomputer -> Laptop zu Hause oder Firefox -> Chrome.
+            </p>
+            <h3 id="import">Importieren</h3>
+            <p>
+                <button disabled><div class="desk">Importieren </div> ⬆️</button>
+                Hier kann die bei <a href="#import">Exportieren</a> heruntergeladene wieder "hochgeladen" werden. <br>
+                Die gespeicherten Daten werden jedoch immer noch nur lokal verarbeitet.
+            </p>
+            <h3>Rechtliches</h3>
+            <p>
+                Es wird für keine Angaben Gewähr übernommen. Die Durchschnittswerte können durch z.B. Fehler beim Kürzen anders ausfallen.<br>
+            </p>
+            <h3>Sonstiges</h3>
+            <p>
+                Der Notenmanager ist im Rahmen eines Fachreferates entstanden. <br>
+                Der Quellcode kann <a href="https://github.com/tikarya/Notenmanager">hier</a> eingesehen und heruntergeladen werden.<br>
+                Die Website wird über Git Hub Pages gehostet.<br>
+                Bei Problemen, Fragen, etc. bei <a href="mailto:tea.4.me0@gmail.com">tea.4.me0@gmail.com</a> melden.
+            </p>
                 
         </div>
     </body>
