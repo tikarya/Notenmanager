@@ -129,9 +129,6 @@ function select_grade(id){
     if (grade.value =="") {
         // remove grade from storage after it got deleted
         // important for manual crossing
-        console.log(type);
-        console.log(type != grades.array.length-1);
-        if(type != grades.array.length-1)
         grades.count--;
         // delete form working object
         grades.array[type][subject] = null;
@@ -253,9 +250,10 @@ function checkCrossing(){
     }
 
 }
+//not working propperly, yet
 
 function checkOralOpportunities(subject){
-    if (grades.oralGrades.length<2 && subject != 1 && !(grades.oralGrades.some((el)=> el === subject))) {
+    if (grades.oralGrades.length<2 && subject != 1) {
         grades.oralGrades.push(subject);
         localStorage.setItem(localKey,JSON.stringify(localObject));
     }
